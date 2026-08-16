@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="hero-layout">
+    <div class="hero-copy">
+        <h1>
+            Gateway to Encrypt,<br>
+            back up, and <span class="secure">secure </span><br>
+            <span class="highlight"> your assets</span>
+        </h1>
+
+        <p>
+            The easiest, fastest, and safest way to secure &amp; back up
+            crypto asset.
+        </p>
+
+        <div class="cta-row">
+            <button class="primary-btn">Connect Wallet</button>
+            <button class="secondary-btn">Register</button>
+            <button class="secondary-btn">Login</button>
+        </div>
+    </div>
+
+    <div class="hero-visual" aria-label="Technology ecosystem">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+
+
+        <img src="{% static 'app/image/web3-removebg-preview.png' %}" alt="hero">
+    </div>
+</section>
+{% endblock %}
