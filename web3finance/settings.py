@@ -25,12 +25,13 @@ SECRET_KEY = "django-insecure-34%kwc^%#uj!ke@9u3mihwsp^at8axlq$%fp_lxye%8r!n%4k$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "unfold",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -39,9 +40,16 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "app",
 ]
+UNFOLD = {
+    "SITE_TITLE": "Web3Finance Admin",
+    "SITE_HEADER": "Dashboard",
+    "THEME": "light",  # or "dark"
+    "SHOW_COUNTS": True,  # show object counts in sidebar
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
