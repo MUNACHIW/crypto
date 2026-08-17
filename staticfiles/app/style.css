@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
 
 :root {
     --bg-deep: #020b16;
@@ -20,8 +24,8 @@
 html, body {
     width: 100%;
     min-height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(180deg, #020f1f 0%, #030b16 100%);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    background: linear-gradient(180deg,  #030b16   0%, #020f1f  100%);
     color: var(--text);
 }
 
@@ -362,4 +366,396 @@ body {
     .feature small {
         font-size: 0.72rem;
     }
+}
+
+.stats-wrap {
+    /* full-bleed background section; content inside aligns with page padding */
+    width: 100%;
+    padding: 10px 0 80px;
+    z-index: 2;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+    align-items: center;
+    /* content stretches across available width but keeps page padding alignment */
+    width: calc(100% - 84px);
+    max-width: none;
+    margin: 0 auto;
+    padding: 14px 42px;
+    box-sizing: border-box;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 24px;
+    min-width: 0;
+}
+
+.stat .count {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.stat .label {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 980px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+    .stat .count { font-size: 1.8rem; }
+    /* reset full-bleed behavior on narrower screens so content respects page padding */
+    .stats-wrap {
+        width: 100%;
+        margin-left: 0;
+        padding: 36px 22px 48px;
+    }
+}
+
+@media (max-width: 640px) {
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .stats-wrap { padding: 28px 14px 48px; }
+    .stat .count { font-size: 1.6rem; }
+    .stat { align-items: flex-start; }
+}
+
+/* Small divider between items to match design */
+.stats .stat + .stat { border-left: 1px solid #fff; padding-left: 12px; }
+ @media screen and (max-width:768px) {
+     .stats .stat + .stat { border-left:none;}
+ }
+.whatusersay {
+    width: 100%;
+    padding: 28px 0 80px;
+    color: #f3f7ff;
+    margin-top: 80px;
+}
+
+.whatusersay-header {
+    text-align: center;
+    max-width: 1180px;
+    margin: 0 auto 38px;
+    padding: 0 20px;
+}
+
+.whatusersay-header h2 {
+    margin: 0;
+    font-size: clamp(2.8rem, 4vw, 5rem);
+    line-height: 1;
+    letter-spacing: -0.055em;
+    font-weight: 900;
+    color: #f4f7fb;
+}
+
+.whatusersay-header p {
+    margin: 26px auto 0;
+    max-width: 980px;
+    color: rgba(230, 239, 255, 0.82);
+    font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+    line-height: 1.35;
+    font-weight: 400;
+}
+
+.whatusersay-grid {
+    width: min(1180px, calc(100% - 80px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    align-items: stretch;
+}
+
+.whatusersay-card {
+    background: rgba(17, 24, 33, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 15px 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.whatusersay-card blockquote {
+    margin: 0;
+    color: rgba(244, 247, 251, 0.96);
+    font-size: clamp(1.12rem, 1.3vw, 1.7rem);
+    line-height: 1.52;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+}
+
+.whatusersay-person {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.whatusersay-person img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.whatusersay-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.whatusersay-meta h3 {
+    margin: 0;
+    font-size: clamp(1.1rem, 1.3vw, 1.45rem);
+    font-weight: 700;
+    color: #f6faff;
+}
+
+.whatusersay-meta span {
+    font-size: 0.96rem;
+    color: rgba(223, 233, 246, 0.75);
+}
+
+@media (max-width: 980px) {
+    .whatusersay-grid {
+        width: min(720px, calc(100% - 32px));
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .whatusersay-card {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .whatusersay {
+        padding-bottom: 56px;
+    }
+
+    .whatusersay-header {
+        margin-bottom: 26px;
+    }
+
+    .whatusersay-header p {
+        margin-top: 18px;
+        font-size: 1.05rem;
+    }
+
+    .whatusersay-grid {
+        width: calc(100% - 30px);
+    }
+
+    .whatusersay-card {
+        padding: 22px 20px 18px;
+    }
+
+    .whatusersay-card blockquote {
+        line-height: 1.5;
+    }
+}
+
+.findsection{
+    width: 100%;
+    height: auto;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.findsection .subsec1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    gap: 20px;
+}
+.findsection .subsec1 h2{
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1.05;
+    margin: 0;
+}
+.findsection .subsec1 h2 span{
+    color: #1793ff;
+    text-decoration: underline;
+}
+.findsection .subsec1 p{
+    width: 40%;
+    max-width: 420px;
+    color: var(--muted);
+    margin: 0;
+    font-size: 0.98rem;
+}
+.findsection .subsec2{
+    display: grid;
+    margin-top: 80px;
+    /* make columns only as wide as their content when possible, but allow them to grow */
+    grid-template-columns: repeat(3, minmax(min-content, 1fr));
+    gap: 12px;
+    align-items: start;
+    padding-top: 12px;
+    grid-auto-flow: dense;
+    justify-items: start;
+}
+.findsection .subsec2 div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #0F1E2E;
+    color: white;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+.findsection .subsec2 div p{
+    max-width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0;
+}
+.findsection .subsec2 div:nth-child(1){
+    /* allow the first panel to be slightly taller if needed, span two rows on wide screens */
+    grid-row: span 2;
+    padding-bottom: 0px;
+}
+.findsection .subsec2 div:nth-child(1) img{
+    margin-top: 40px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ensure images don't force a wide column; keep them natural size */
+.findsection .subsec2 img{
+    display: block;
+    width: auto;
+    max-width: 220px;
+    height: auto;
+}
+
+@media screen and (max-width:1000px){
+    .findsection .subsec1{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .findsection .subsec1 p {
+        width: 90%;
+        margin-top:40px;
+        margin-bottom: 20px;
+    }
+    .findsection{
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+    .findsection .subsec2{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width:640px){
+    .findsection{ padding-left: 18px; padding-right: 18px; }
+    .findsection .subsec2{ grid-template-columns: 1fr; }
+    .findsection .subsec2 div:nth-child(1){ grid-row: auto; }
+}
+.getstarted{
+    background: url(./image/forbg.jpg);
+    padding:10px;
+    background-size: cover;
+    width: 100%;
+    padding-bottom: 60px;
+    color: white;
+    padding-top: 40px;
+}
+.getstarted h2{
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+}
+.getstarted h2 span{
+    color: #1793ff;
+    text-decoration: underline;
+}
+.getstarted .holder{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-left:50px ;
+    padding-right: 50px;
+    margin-top: 40px;
+    
+}
+.getstarted .holder div{
+  background: #0E1C2C;
+  padding: 8px;
+  width: 30%;
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.getstarted .holder div .iconholder{
+    border: 2px solid #1793ff;
+    color: #1793ff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+.getstarted .holder div:nth-child(1){
+    background:#3A96FF ;
+    padding-bottom: 10px;
+}
+ .getstarted .holder div:nth-child(1) .iconholder{
+    background: white;
+}
+.getstarted .holder div:nth-child(1) .linkholder{
+    width: 100%;
+    margin-top:60px;
+}
+.getstarted .holder div:nth-child(1) .linkholder a{
+    text-decoration: none ;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding:10px;
+    color:white;
+}
+@media screen and (max-width:1054px) {
+    .getstarted .holder{
+        flex-direction: column;
+        align-items: center;
+    }
+    .getstarted .holder div{
+        width: 80%;
+    }
+    
+}
+@media screen and (max-width:480px) {
+       .getstarted .holder div{
+        width:100%;
+       }
 }

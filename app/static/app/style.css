@@ -434,7 +434,9 @@ body {
 
 /* Small divider between items to match design */
 .stats .stat + .stat { border-left: 1px solid #fff; padding-left: 12px; }
-
+ @media screen and (max-width:768px) {
+     .stats .stat + .stat { border-left:none;}
+ }
 .whatusersay {
     width: 100%;
     padding: 28px 0 80px;
@@ -672,4 +674,88 @@ body {
     .findsection{ padding-left: 18px; padding-right: 18px; }
     .findsection .subsec2{ grid-template-columns: 1fr; }
     .findsection .subsec2 div:nth-child(1){ grid-row: auto; }
+}
+.getstarted{
+    background: url(./image/forbg.jpg);
+    padding:10px;
+    background-size: cover;
+    width: 100%;
+    padding-bottom: 60px;
+    color: white;
+    padding-top: 40px;
+}
+.getstarted h2{
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+}
+.getstarted h2 span{
+    color: #1793ff;
+    text-decoration: underline;
+}
+.getstarted .holder{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-left:50px ;
+    padding-right: 50px;
+    margin-top: 40px;
+    
+}
+.getstarted .holder div{
+  background: #0E1C2C;
+  padding: 8px;
+  width: 30%;
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.getstarted .holder div .iconholder{
+    border: 2px solid #1793ff;
+    color: #1793ff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+.getstarted .holder div:nth-child(1){
+    background:#3A96FF ;
+    padding-bottom: 10px;
+}
+ .getstarted .holder div:nth-child(1) .iconholder{
+    background: white;
+}
+.getstarted .holder div:nth-child(1) .linkholder{
+    width: 100%;
+    margin-top:60px;
+}
+.getstarted .holder div:nth-child(1) .linkholder a{
+    text-decoration: none ;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding:10px;
+    color:white;
+}
+@media screen and (max-width:1054px) {
+    .getstarted .holder{
+        flex-direction: column;
+        align-items: center;
+    }
+    .getstarted .holder div{
+        width: 80%;
+    }
+    
+}
+@media screen and (max-width:480px) {
+       .getstarted .holder div{
+        width:100%;
+       }
 }
