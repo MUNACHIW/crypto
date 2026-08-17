@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
 
 :root {
     --bg-deep: #020b16;
@@ -20,8 +24,8 @@
 html, body {
     width: 100%;
     min-height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(180deg, #020f1f 0%, #030b16 100%);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    background: linear-gradient(180deg,  #030b16   0%, #020f1f  100%);
     color: var(--text);
 }
 
@@ -362,4 +366,175 @@ body {
     .feature small {
         font-size: 0.72rem;
     }
+}
+
+.stats-wrap {
+    /* full-bleed background section; content inside aligns with page padding */
+    width: 100%;
+    padding: 10px 0 80px;
+    z-index: 2;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+    align-items: center;
+    /* content stretches across available width but keeps page padding alignment */
+    width: calc(100% - 84px);
+    max-width: none;
+    margin: 0 auto;
+    padding: 14px 42px;
+    box-sizing: border-box;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 24px;
+    min-width: 0;
+}
+
+.stat .count {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.stat .label {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 980px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+    .stat .count { font-size: 1.8rem; }
+    /* reset full-bleed behavior on narrower screens so content respects page padding */
+    .stats-wrap {
+        width: 100%;
+        margin-left: 0;
+        padding: 36px 22px 48px;
+    }
+}
+
+@media (max-width: 640px) {
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .stats-wrap { padding: 28px 14px 48px; }
+    .stat .count { font-size: 1.6rem; }
+    .stat { align-items: flex-start; }
+}
+
+/* Small divider between items to match design */
+.stats .stat + .stat { border-left: 1px solid #fff; padding-left: 12px; }
+
+.findsection{
+    width: 100%;
+    height: auto;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.findsection .subsec1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    gap: 20px;
+}
+.findsection .subsec1 h2{
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1.05;
+    margin: 0;
+}
+.findsection .subsec1 h2 span{
+    color: #1793ff;
+    text-decoration: underline;
+}
+.findsection .subsec1 p{
+    width: 40%;
+    max-width: 420px;
+    color: var(--muted);
+    margin: 0;
+    font-size: 0.98rem;
+}
+.findsection .subsec2{
+    display: grid;
+    margin-top: 80px;
+    /* make columns only as wide as their content when possible, but allow them to grow */
+    grid-template-columns: repeat(3, minmax(min-content, 1fr));
+    gap: 12px;
+    align-items: start;
+    padding-top: 12px;
+    grid-auto-flow: dense;
+    justify-items: start;
+}
+.findsection .subsec2 div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #0F1E2E;
+    color: white;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+.findsection .subsec2 div p{
+    max-width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0;
+}
+.findsection .subsec2 div:nth-child(1){
+    /* allow the first panel to be slightly taller if needed, span two rows on wide screens */
+    grid-row: span 2;
+    padding-bottom: 0px;
+}
+.findsection .subsec2 div:nth-child(1) img{
+    margin-top: 40px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ensure images don't force a wide column; keep them natural size */
+.findsection .subsec2 img{
+    display: block;
+    width: auto;
+    max-width: 220px;
+    height: auto;
+}
+
+@media screen and (max-width:1000px){
+    .findsection .subsec1{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .findsection .subsec1 p {
+        width: 90%;
+        margin-top:40px;
+        margin-bottom: 20px;
+    }
+    .findsection{
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+    .findsection .subsec2{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width:640px){
+    .findsection{ padding-left: 18px; padding-right: 18px; }
+    .findsection .subsec2{ grid-template-columns: 1fr; }
+    .findsection .subsec2 div:nth-child(1){ grid-row: auto; }
 }
