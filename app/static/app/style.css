@@ -745,6 +745,26 @@ body {
     margin:20px;
     font-weight: bold;
 }
+@media screen and (max-width:1024px){
+    .explore .subsec2{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width:800px) {
+        .explore .subsec1{
+            flex-direction: column;
+            align-items: flex-start;
+        }
+}
+@media screen and (max-width:640px){
+    .explore .subsec2{
+        grid-template-columns: 1fr;
+
+    }
+        .explore .subsec2 div{
+            width: 100%;   
+         }
+}
 @media screen and (max-width:640px){
     .findsection{ padding-left: 18px; padding-right: 18px; }
     .findsection .subsec2{ grid-template-columns: 1fr; }
