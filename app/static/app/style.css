@@ -88,6 +88,18 @@ body {
     width:20%;
 }
 
+.brand-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+}
+
 .brand-mark {
     display: inline-flex;
     width: 24px;
@@ -107,6 +119,7 @@ body {
     border-radius: 999px;
     cursor: pointer;
     font-weight: 700;
+    text-decoration: none;
 }
 
 .connect-btn {
@@ -115,6 +128,7 @@ body {
     padding: 10px 26px;
     font-size: 0.95rem;
     box-shadow: 0 8px 20px rgba(41, 138, 255, 0.45);
+    text-decoration: none;
 }
 
 .hero-content {
@@ -708,6 +722,7 @@ body {
     padding:10px;
     gap: 20px;
     margin-top: 40px;
+    width:100%;
 }
 .explore .subsec2 div{
     width: 100%;
@@ -767,7 +782,7 @@ body {
 }
 @media screen and (max-width:480px){
       .explore .subsec2 div{
-    width: 100%;
+    width: 120%;
 
     }
 }
@@ -1346,7 +1361,7 @@ body {
 .footer-brand p,
 .footer-newsletter p {
     margin: 0;
-    color: rgba(237, 244, 255, 0.8);
+    color: white;
     font-size: 1rem;
     line-height: 1.55;
 }
@@ -1399,6 +1414,9 @@ body {
     box-shadow: 0 8px 18px rgba(41, 138, 255, 0.3);
     cursor: pointer;
 }
+a{
+    text-decoration: none;
+}
 
 .footer-links {
     padding-left: 36px;
@@ -1413,7 +1431,7 @@ body {
 }
 
 .quick-links-grid a {
-    color: rgba(237, 244, 255, 0.76);
+    color: white;
     text-decoration: none;
     font-size: 0.98rem;
     font-weight: 600;

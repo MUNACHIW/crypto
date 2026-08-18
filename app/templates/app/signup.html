@@ -1,11 +1,92 @@
 {% extends 'app/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'app/signup.css' %}" />
+{% endblock %}
 
 {% block content %}
-<h2>Sign Up</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create account</button>
-</form>
-<p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+<div class="signup-container">
+    <img src="{% static 'app/image/logo.webp' %}" alt="Web3Finance Logo" class="login-logo" />
+    <div class="signup-card">
+        <h1 class="signup-title">Welcome to Web3 Asset Finance</h1>
+        <p class="signup-subtitle">Please sign up to continue</p>
+
+        <form method="post" class="signup-form" novalidate>
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                <div class="form-errors">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.first_name.id_for_label }}" class="form-label">Name</label>
+                {{ form.first_name }}
+                {% if form.first_name.errors %}
+                <div class="form-errors">{{ form.first_name.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                <div class="form-errors">{{ form.username.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.phone_number.id_for_label }}" class="form-label">Phone Number</label>
+                {{ form.phone_number }}
+                {% if form.phone_number.errors %}
+                <div class="form-errors">{{ form.phone_number.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.country.id_for_label }}" class="form-label">Country</label>
+                {{ form.country }}
+                {% if form.country.errors %}
+                <div class="form-errors">{{ form.country.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password1.id_for_label }}" class="form-label">Password</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                <div class="form-errors">{{ form.password1.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Password</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                <div class="form-errors">{{ form.password2.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.referral_id.id_for_label }}" class="form-label">Referral ID</label>
+                {{ form.referral_id }}
+                {% if form.referral_id.errors %}
+                <div class="form-errors">{{ form.referral_id.errors }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="signup-btn">Create Account</button>
+        </form>
+
+        <a href="{% url 'login' %}" class="signin-link">Sign in</a>
+    </div>
+</div>
+
+<script>
+    document.body.classList.add('signup-page');
+</script>
 {% endblock %}

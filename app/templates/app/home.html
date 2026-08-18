@@ -16,9 +16,9 @@
         </p>
 
         <div class="cta-row">
-            <button class="primary-btn">Connect Wallet</button>
-            <button class="secondary-btn">Register</button>
-            <button class="secondary-btn">Login</button>
+            <a href="" class="primary-btn">Connect Wallet</a>
+            <a href="{% url 'register' %}" class="secondary-btn">Register</a>
+            <a href="{% url 'login' %}" class="secondary-btn">Login</a>
         </div>
     </div>
 
@@ -391,8 +391,8 @@
         </p>
 
         <div class="cta-banner-actions">
-            <button class="cta-banner-btn primary">Connect Wallet</button>
-            <button class="cta-banner-btn secondary">Login</button>
+            <a href="" class="cta-banner-btn primary">Connect Wallet</a>
+            <a href="{% url 'login' %}" class="cta-banner-btn secondary">Login</a>
         </div>
     </div>
 </section>
