@@ -766,8 +766,8 @@ body {
          }
 }
 @media screen and (max-width:480px){
-      .explore .subsec2{
-        grid-template-columns: 1fr;
+      .explore .subsec2 div{
+    width: 100%;
 
     }
 }
