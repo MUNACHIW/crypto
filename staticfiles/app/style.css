@@ -765,6 +765,12 @@ body {
             width: 100%;   
          }
 }
+@media screen and (max-width:480px){
+      .explore .subsec2{
+        grid-template-columns: 1fr;
+
+    }
+}
 @media screen and (max-width:640px){
     .findsection{ padding-left: 18px; padding-right: 18px; }
     .findsection .subsec2{ grid-template-columns: 1fr; }
