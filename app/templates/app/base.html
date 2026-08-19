@@ -28,7 +28,7 @@
                     <img src="{% static 'app/image/logo.webp' %}" alt="Web3Finance Logo" class="logo" />
                 </a>
             </div>
-            <button class="connect-btn">Connect Wallet</button>
+            <button type="button" class="connect-btn wallet-connect-trigger">Connect Wallet</button>
         </header>
 
         <main class="hero-content">
@@ -38,7 +38,45 @@
 
     {% block full_bleed %}{% endblock %}
 
+    <div class="modal fade wallet-modal" id="walletModal" tabindex="-1" aria-labelledby="walletModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h2 class="modal-title" id="walletModalLabel">Connect Wallet</h2>
+                        <p class="wallet-modal-subtitle">Gateway to Web3</p>
+                    </div>
+                    <button type="button" class="wallet-modal-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-lg" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="wallet-modal-heading">Backup Wallet</h3>
+                    <button type="button" class="wallet-option">
+                        <span class="wallet-option-icon"><img src="{% static 'app/image/icon.png' %}" width="20"
+                                alt=""></span>
+                        <span class="wallet-option-copy">
+                            <strong>Automatic/Manual backup</strong>
+                            <small>Secure your wallet and recover your assets</small>
+                        </span>
+                        <span class="wallet-option-action">Continue</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="{% static 'app/stats.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.wallet-connect-trigger').forEach(function (trigger) {
+                trigger.setAttribute('data-bs-toggle', 'modal');
+                trigger.setAttribute('data-bs-target', '#walletModal');
+            });
+        });
+    </script>
+
 </body>
 
 </html>
