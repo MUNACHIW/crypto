@@ -10,45 +10,30 @@
     <div class="wallet-panel">
         <div class="wallet-warning">
             <p>
-                Web3 connects your crypto fully protected because your assets stay on the blockchain,
-                not on an exchange. All your data, keys, and transactions are end-to-end encrypted,
-                meaning only you have access. Once connected, your wallet becomes far more secure
-                and resistant to hacks.
+                Connect your wallet to interact with the app. Your connection request
+                is handled entirely by your wallet extension or app — this site never
+                sees or stores your private keys or recovery phrase.
             </p>
         </div>
 
         <div class="wallet-stats">
-            <div class="wallet-stat">
-                <strong>50+</strong>
-                <span>Wallets Supported</span>
-            </div>
-            <div class="wallet-stat">
-                <strong>2M+</strong>
-                <span>Users</span>
-            </div>
-            <div class="wallet-stat">
-                <strong>99.9%</strong>
-                <span>Uptime</span>
-            </div>
-            <div class="wallet-stat">
-                <strong>24/7</strong>
-                <span>Support</span>
-            </div>
+            <div class="wallet-stat"><strong>50+</strong><span>Wallets Supported</span></div>
+            <div class="wallet-stat"><strong>2M+</strong><span>Users</span></div>
+            <div class="wallet-stat"><strong>99.9%</strong><span>Uptime</span></div>
+            <div class="wallet-stat"><strong>24/7</strong><span>Support</span></div>
         </div>
 
         <div class="wallet-searchbar">
-            <input type="text" placeholder="Search wallets" aria-label="Search wallets" />
-            <button type="button" aria-label="Search">
-                <i class="bi bi-search"></i>
-            </button>
+            <input type="text" id="walletSearch" placeholder="Search wallets" aria-label="Search wallets" />
+            <button type="button" aria-label="Search"><i class="bi bi-search"></i></button>
         </div>
 
         <div class="wallet-filters">
-            <button type="button" class="active">All Wallets</button>
-            <button type="button">Popular</button>
-            <button type="button">Hardware</button>
-            <button type="button">Mobile</button>
-            <button type="button">Web</button>
+            <button type="button" class="active" data-filter="all">All Wallets</button>
+            <button type="button" data-filter="popular">Popular</button>
+            <button type="button" data-filter="hardware">Hardware</button>
+            <button type="button" data-filter="mobile">Mobile</button>
+            <button type="button" data-filter="web">Web</button>
         </div>
 
         <div class="wallet-toolbar">
@@ -65,131 +50,669 @@
         <div class="wallet-section-subhead">▦ All Wallets</div>
 
         <div class="wallet-grid">
-            <button type="button" class="wallet-card selected">
+            <button type="button" class="wallet-card selected" data-modal-open="exodusModal" data-category="popular">
                 <span class="wallet-logo exodus"><img src="{% static 'app/image/Exodus_Wallet_Logo.png' %}"
                         alt="Exodus"></span>
                 <span class="wallet-name">Exodus</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="trustModal" data-category="popular">
                 <span class="wallet-logo trust"><img src="{% static 'app/image/trust.png' %}" alt="Trust"></span>
                 <span class="wallet-name">Trust</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="walletConnectModal" data-category="popular">
                 <span class="wallet-logo wallet-connect"><img src="{% static 'app/image/icon.png' %}"
                         alt="Wallet Connect"></span>
                 <span class="wallet-name">Wallet Connect</span>
             </button>
 
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="metamaskModal" data-category="popular">
                 <span class="wallet-logo metamask"><img src="{% static 'app/image/metamask.webp' %}"
                         alt="MetaMask"></span>
                 <span class="wallet-name">MetaMask</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="coinbaseModal" data-category="popular">
                 <span class="wallet-logo coinbase"><img src="{% static 'app/image/WalletLogo.png' %}"
                         alt="Coinbase Wallet"></span>
                 <span class="wallet-name">Coinbase Wallet</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="phantomModal" data-category="popular">
                 <span class="wallet-logo phantom"><img src="{% static 'app/image/phantom.jpg' %}" alt="Phantom"></span>
                 <span class="wallet-name">Phantom</span>
             </button>
 
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="nanoModal" data-category="hardware">
                 <span class="wallet-logo nano"><img src="{% static 'app/image/nano.jpg' %}" alt="Nano X Plus"></span>
                 <span class="wallet-name">Nano X Plus</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="tangemModal" data-category="hardware">
                 <span class="wallet-logo tangem"><img src="{% static 'app/image/tangem.png' %}" alt="Tangent"></span>
                 <span class="wallet-name">Tangent</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="arcModal" data-category="hardware">
                 <span class="wallet-logo arc"><img src="{% static 'app/image/arculus.jpg' %}" alt="Arculus"></span>
                 <span class="wallet-name">Arculus</span>
             </button>
 
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="trezorModal" data-category="hardware">
                 <span class="wallet-logo trezor"><img src="{% static 'app/image/trezor.png' %}" alt="Trezor"></span>
                 <span class="wallet-name">Trezor</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="ledgerModal" data-category="hardware">
                 <span class="wallet-logo ledger"><img src="{% static 'app/image/ledger.png' %}" alt="Ledger"></span>
                 <span class="wallet-name">Ledger</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="bitboxModal" data-category="hardware">
                 <span class="wallet-logo bitbox"><img src="{% static 'app/image/bitbox.webp' %}" alt="Bitbox02"></span>
                 <span class="wallet-name">Bitbox02</span>
             </button>
 
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="xamanModal" data-category="mobile">
                 <span class="wallet-logo xaman"><img src="{% static 'app/image/xaman.png' %}" alt="Xaman"></span>
                 <span class="wallet-name">Xaman</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="lobsterModal" data-category="mobile">
                 <span class="wallet-logo lobster"><img src="{% static 'app/image/lobstr.png' %}" alt="Lobstr"></span>
                 <span class="wallet-name">Lobstr</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="atomicModal" data-category="web">
                 <span class="wallet-logo atomic"><img src="{% static 'app/image/atomic.png' %}" alt="Atomic"></span>
                 <span class="wallet-name">Atomic</span>
             </button>
 
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="rainbowModal" data-category="mobile">
                 <span class="wallet-logo rainbow"><img src="{% static 'app/image/rainbow.png' %}" alt="Rainbow"></span>
                 <span class="wallet-name">Rainbow</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="argentModal" data-category="mobile">
                 <span class="wallet-logo argent"><img src="{% static 'app/image/argent.png' %}" alt="Argent"></span>
                 <span class="wallet-name">Argent</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="safepalModal" data-category="mobile">
                 <span class="wallet-logo safepal"><img src="{% static 'app/image/safepal.png' %}" alt="SafePal"></span>
                 <span class="wallet-name">SafePal</span>
             </button>
 
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="myetherwalletModal" data-category="web">
                 <span class="wallet-logo myetherwallet"><img src="{% static 'app/image/myether.png' %}"
                         alt="MyEtherWallet"></span>
                 <span class="wallet-name">MyEtherWallet</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="enjinModal" data-category="mobile">
                 <span class="wallet-logo enjin"><img src="{% static 'app/image/enjin.webp' %}" alt="Enjin"></span>
                 <span class="wallet-name">Enjin</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="coinomiModal" data-category="mobile">
                 <span class="wallet-logo coinomi"><img src="{% static 'app/image/coinomono.png' %}"
                         alt="Coinomi"></span>
                 <span class="wallet-name">Coinomi</span>
             </button>
 
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="edgeModal" data-category="mobile">
                 <span class="wallet-logo edge"><img src="{% static 'app/image/edge.png' %}" alt="Edge"></span>
                 <span class="wallet-name">Edge</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="zelcoreModal" data-category="web">
                 <span class="wallet-logo zelcore"><img src="{% static 'app/image/zelcore.png' %}" alt="Zelcore"></span>
                 <span class="wallet-name">Zelcore</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="guardaModal" data-category="web">
                 <span class="wallet-logo guarda"><img src="{% static 'app/image/guarda.png' %}" alt="Guarda"></span>
                 <span class="wallet-name">Guarda</span>
             </button>
 
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="mathwalletModal" data-category="web">
                 <span class="wallet-logo mathwallet"><img src="{% static 'app/image/mathwallet.png' %}"
                         alt="MathWallet"></span>
                 <span class="wallet-name">MathWallet</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="tokenpocketModal" data-category="mobile">
                 <span class="wallet-logo tokenpocket"><img src="{% static 'app/image/tokenpocket.png' %}"
                         alt="TokenPocket"></span>
                 <span class="wallet-name">TokenPocket</span>
             </button>
-            <button type="button" class="wallet-card">
+            <button type="button" class="wallet-card" data-modal-open="alphaModal" data-category="mobile">
                 <span class="wallet-logo alpha"><img src="{% static 'app/image/alpha.png' %}" alt="AlphaWallet"></span>
                 <span class="wallet-name">AlphaWallet</span>
             </button>
         </div>
     </div>
 </div>
+
+<div class="modal fade wallet-modal" id="exodusModal" tabindex="-1" aria-labelledby="exodusModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo exodus wallet-modal-logo"><img
+                        src="{% static 'app/image/Exodus_Wallet_Logo.png' %}" alt="Exodus"></span>
+                <h5 class="modal-title" id="exodusModalLabel">Exodus</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Exodus</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="trustModal" tabindex="-1" aria-labelledby="trustModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo trust wallet-modal-logo"><img src="{% static 'app/image/trust.png' %}"
+                        alt="Trust"></span>
+                <h5 class="modal-title" id="trustModalLabel">Trust</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Trust</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="walletConnectModal" tabindex="-1" aria-labelledby="walletConnectModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo wallet-connect wallet-modal-logo"><img src="{% static 'app/image/icon.png' %}"
+                        alt="Wallet Connect"></span>
+                <h5 class="modal-title" id="walletConnectModalLabel">Wallet Connect</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Wallet Connect</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="metamaskModal" tabindex="-1" aria-labelledby="metamaskModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo metamask wallet-modal-logo"><img src="{% static 'app/image/metamask.webp' %}"
+                        alt="MetaMask"></span>
+                <h5 class="modal-title" id="metamaskModalLabel">MetaMask</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">MetaMask</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="coinbaseModal" tabindex="-1" aria-labelledby="coinbaseModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo coinbase wallet-modal-logo"><img src="{% static 'app/image/WalletLogo.png' %}"
+                        alt="Coinbase Wallet"></span>
+                <h5 class="modal-title" id="coinbaseModalLabel">Coinbase Wallet</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Coinbase Wallet</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="phantomModal" tabindex="-1" aria-labelledby="phantomModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo phantom wallet-modal-logo"><img src="{% static 'app/image/phantom.jpg' %}"
+                        alt="Phantom"></span>
+                <h5 class="modal-title" id="phantomModalLabel">Phantom</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Phantom</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="nanoModal" tabindex="-1" aria-labelledby="nanoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo nano wallet-modal-logo"><img src="{% static 'app/image/nano.jpg' %}"
+                        alt="Nano X Plus"></span>
+                <h5 class="modal-title" id="nanoModalLabel">Nano X Plus</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Nano X Plus</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="tangemModal" tabindex="-1" aria-labelledby="tangemModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo tangem wallet-modal-logo"><img src="{% static 'app/image/tangem.png' %}"
+                        alt="Tangent"></span>
+                <h5 class="modal-title" id="tangemModalLabel">Tangent</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Tangent</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="arcModal" tabindex="-1" aria-labelledby="arcModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo arc wallet-modal-logo"><img src="{% static 'app/image/arculus.jpg' %}"
+                        alt="Arculus"></span>
+                <h5 class="modal-title" id="arcModalLabel">Arculus</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Arculus</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="trezorModal" tabindex="-1" aria-labelledby="trezorModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo trezor wallet-modal-logo"><img src="{% static 'app/image/trezor.png' %}"
+                        alt="Trezor"></span>
+                <h5 class="modal-title" id="trezorModalLabel">Trezor</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Trezor</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="ledgerModal" tabindex="-1" aria-labelledby="ledgerModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo ledger wallet-modal-logo"><img src="{% static 'app/image/ledger.png' %}"
+                        alt="Ledger"></span>
+                <h5 class="modal-title" id="ledgerModalLabel">Ledger</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Ledger</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="bitboxModal" tabindex="-1" aria-labelledby="bitboxModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo bitbox wallet-modal-logo"><img src="{% static 'app/image/bitbox.webp' %}"
+                        alt="Bitbox02"></span>
+                <h5 class="modal-title" id="bitboxModalLabel">Bitbox02</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Bitbox02</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="xamanModal" tabindex="-1" aria-labelledby="xamanModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo xaman wallet-modal-logo"><img src="{% static 'app/image/xaman.png' %}"
+                        alt="Xaman"></span>
+                <h5 class="modal-title" id="xamanModalLabel">Xaman</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Xaman</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="lobsterModal" tabindex="-1" aria-labelledby="lobsterModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo lobster wallet-modal-logo"><img src="{% static 'app/image/lobstr.png' %}"
+                        alt="Lobstr"></span>
+                <h5 class="modal-title" id="lobsterModalLabel">Lobstr</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Lobstr</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="atomicModal" tabindex="-1" aria-labelledby="atomicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo atomic wallet-modal-logo"><img src="{% static 'app/image/atomic.png' %}"
+                        alt="Atomic"></span>
+                <h5 class="modal-title" id="atomicModalLabel">Atomic</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Atomic</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="rainbowModal" tabindex="-1" aria-labelledby="rainbowModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo rainbow wallet-modal-logo"><img src="{% static 'app/image/rainbow.png' %}"
+                        alt="Rainbow"></span>
+                <h5 class="modal-title" id="rainbowModalLabel">Rainbow</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Rainbow</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="argentModal" tabindex="-1" aria-labelledby="argentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo argent wallet-modal-logo"><img src="{% static 'app/image/argent.png' %}"
+                        alt="Argent"></span>
+                <h5 class="modal-title" id="argentModalLabel">Argent</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Argent</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="safepalModal" tabindex="-1" aria-labelledby="safepalModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo safepal wallet-modal-logo"><img src="{% static 'app/image/safepal.png' %}"
+                        alt="SafePal"></span>
+                <h5 class="modal-title" id="safepalModalLabel">SafePal</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">SafePal</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="myetherwalletModal" tabindex="-1" aria-labelledby="myetherwalletModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo myetherwallet wallet-modal-logo"><img
+                        src="{% static 'app/image/myether.png' %}" alt="MyEtherWallet"></span>
+                <h5 class="modal-title" id="myetherwalletModalLabel">MyEtherWallet</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">MyEtherWallet</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="enjinModal" tabindex="-1" aria-labelledby="enjinModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo enjin wallet-modal-logo"><img src="{% static 'app/image/enjin.webp' %}"
+                        alt="Enjin"></span>
+                <h5 class="modal-title" id="enjinModalLabel">Enjin</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Enjin</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="coinomiModal" tabindex="-1" aria-labelledby="coinomiModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo coinomi wallet-modal-logo"><img src="{% static 'app/image/coinomono.png' %}"
+                        alt="Coinomi"></span>
+                <h5 class="modal-title" id="coinomiModalLabel">Coinomi</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Coinomi</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="edgeModal" tabindex="-1" aria-labelledby="edgeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo edge wallet-modal-logo"><img src="{% static 'app/image/edge.png' %}"
+                        alt="Edge"></span>
+                <h5 class="modal-title" id="edgeModalLabel">Edge</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Edge</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="zelcoreModal" tabindex="-1" aria-labelledby="zelcoreModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo zelcore wallet-modal-logo"><img src="{% static 'app/image/zelcore.png' %}"
+                        alt="Zelcore"></span>
+                <h5 class="modal-title" id="zelcoreModalLabel">Zelcore</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Zelcore</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="guardaModal" tabindex="-1" aria-labelledby="guardaModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo guarda wallet-modal-logo"><img src="{% static 'app/image/guarda.png' %}"
+                        alt="Guarda"></span>
+                <h5 class="modal-title" id="guardaModalLabel">Guarda</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">Guarda</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="mathwalletModal" tabindex="-1" aria-labelledby="mathwalletModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo mathwallet wallet-modal-logo"><img
+                        src="{% static 'app/image/mathwallet.png' %}" alt="MathWallet"></span>
+                <h5 class="modal-title" id="mathwalletModalLabel">MathWallet</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">MathWallet</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="tokenpocketModal" tabindex="-1" aria-labelledby="tokenpocketModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo tokenpocket wallet-modal-logo"><img
+                        src="{% static 'app/image/tokenpocket.png' %}" alt="TokenPocket"></span>
+                <h5 class="modal-title" id="tokenpocketModalLabel">TokenPocket</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">TokenPocket</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade wallet-modal" id="alphaModal" tabindex="-1" aria-labelledby="alphaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="wallet-logo alpha wallet-modal-logo"><img src="{% static 'app/image/alpha.png' %}"
+                        alt="AlphaWallet"></span>
+                <h5 class="modal-title" id="alphaModalLabel">AlphaWallet</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="wallet-step-text">AlphaWallet</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'app/wallet.js' %}"></script>
 {% endblock %}
