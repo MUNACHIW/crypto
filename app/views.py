@@ -8,6 +8,9 @@ from .forms import SignUpForm
 def home(request):
     return render(request, "app/home.html")
 
+def wallet(request):
+    return render(request, "app/wallet.html" )
+
 
 def signup(request):
     if request.method == "POST":
