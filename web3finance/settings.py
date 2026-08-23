@@ -120,6 +120,11 @@ USE_I18N = True
 USE_TZ = True
 
 
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',  # keep default for admin
+#     'app.backends.EmailBackend',                  # add custom email backend
+# ]
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
@@ -131,3 +136,6 @@ STATICFILES_DIRS = [BASE_DIR / "app" / "static"]
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "dashboard"

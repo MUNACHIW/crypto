@@ -4,6 +4,25 @@ from django.urls import reverse
 
 
 class AuthFlowTests(TestCase):
+    def test_anonymous_users_are_redirected_from_dashboard(self):
+        response = self.client.get(reverse("dashboard"))
+
+        self.assertRedirects(
+            response,
+            f"{reverse('login')}?next={reverse('dashboard')}",
+        )
+
+    def test_authenticated_users_can_access_dashboard(self):
+        user = get_user_model().objects.create_user(
+            username="dashboard-user",
+            password="StrongPass123!",
+        )
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("dashboard"))
+
+        self.assertEqual(response.status_code, 200)
+
     def test_signup_creates_profile_and_logs_user_in(self):
         response = self.client.post(
             reverse("signup"),
@@ -16,7 +35,7 @@ class AuthFlowTests(TestCase):
             follow=True,
         )
 
-        self.assertEqual(response.status_code, 200)
+        self.assertRedirects(response, reverse("dashboard"))
         user = get_user_model().objects.get(username="alice")
         self.assertTrue(user.is_authenticated)
         self.assertTrue(hasattr(user, "profile"))
@@ -35,5 +54,5 @@ class AuthFlowTests(TestCase):
             follow=True,
         )
 
-        self.assertEqual(response.status_code, 200)
+        self.assertRedirects(response, reverse("dashboard"))
         self.assertTrue(response.wsgi_request.user.is_authenticated)

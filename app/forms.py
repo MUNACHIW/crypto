@@ -75,15 +75,18 @@ class SignUpForm(UserCreationForm):
         user = super().save(commit=False)
         user.email = self.cleaned_data["email"]
         user.first_name = self.cleaned_data["first_name"]
+        # Use email as the username so login works with email
+        user.username = self.cleaned_data["email"]
+
         if commit:
             user.save()
-            # Create or update Profile
             profile, created = Profile.objects.get_or_create(user=user)
             profile.phone_number = self.cleaned_data.get("phone_number")
             profile.country = self.cleaned_data.get("country")
             profile.referral_id = self.cleaned_data.get("referral_id")
             profile.save()
         return user
+
 
 
 class LoginForm(AuthenticationForm):
@@ -102,3 +105,8 @@ class LoginForm(AuthenticationForm):
             'autocomplete': 'current-password',
         })
     )
+    
+    error_messages = {
+        'invalid_login': "Invalid email or password. Please try again.",
+        'inactive': "This account is inactive.",
+    }
