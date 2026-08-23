@@ -20,6 +20,15 @@ def earn(request):
 def swap(request):
     return render(request, "app/swap.html")
 
+@login_required
+def fund(request):
+    return render(request, "app/fund.html")
+@login_required
+def fund_wallet(request):
+    return render(request, "app/fund_wallet.html")
+@login_required
+def card(request):
+    return render(request, "app/card.html")
 
 @login_required
 def dashboard(request):

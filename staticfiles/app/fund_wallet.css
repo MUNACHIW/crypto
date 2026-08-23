@@ -1,0 +1,199 @@
+:root {
+    --rc-bg: #0a0a0c;
+    --rc-panel: #16171b;
+    --rc-line: rgba(255, 255, 255, 0.08);
+    --rc-text: #f5f5f7;
+    --rc-muted: rgba(245, 245, 247, 0.5);
+    --rc-muted-2: rgba(245, 245, 247, 0.35);
+    --rc-green: #2ecc71;
+    --rc-green-dark: #22a85d;
+}
+
+.page-shell .topbar { display: none !important; }
+.page-shell { padding-top: 0 !important; background: var(--rc-bg) !important; }
+
+.recharge-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: var(--rc-bg);
+    padding: 20px 16px 110px;
+}
+
+.recharge-panel-outer {
+    width: min(720px, 100%);
+}
+
+/* Top bar */
+.recharge-topbar {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    padding: 6px 0 22px;
+}
+
+.recharge-back {
+    color: var(--rc-text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+.recharge-back svg { width: 22px; height: 22px; }
+
+.recharge-title {
+    margin: 0;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--rc-text);
+}
+
+.recharge-topbar-spacer {
+    width: 32px;
+}
+
+/* Balance + amount card */
+.recharge-card {
+    background: var(--rc-panel);
+    border: 1px solid var(--rc-line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 22px;
+}
+
+.recharge-balance-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rc-line);
+}
+
+.recharge-balance-label {
+    font-size: 0.82rem;
+    color: var(--rc-muted);
+}
+
+.recharge-balance-value {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--rc-text);
+}
+
+.recharge-amount-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 14px;
+}
+
+.recharge-amount-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--rc-text);
+    font-size: 1.05rem;
+    padding: 0;
+}
+.recharge-amount-input::placeholder {
+    color: var(--rc-muted-2);
+}
+.recharge-amount-input::-webkit-outer-spin-button,
+.recharge-amount-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.recharge-amount-input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.recharge-clear-btn {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: var(--rc-muted);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+.recharge-clear-btn svg { width: 12px; height: 12px; }
+.recharge-clear-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--rc-text);
+}
+
+/* Quick amount buttons */
+.recharge-section-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--rc-text);
+    margin: 0 0 14px;
+}
+
+.recharge-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.recharge-quick-btn {
+    background: var(--rc-panel);
+    border: 1px solid var(--rc-line);
+    border-radius: 10px;
+    padding: 14px 10px;
+    color: var(--rc-text);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+.recharge-quick-btn:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: #1b1c21;
+}
+.recharge-quick-btn.active {
+    border-color: var(--rc-green);
+    background: rgba(46, 204, 113, 0.1);
+    color: var(--rc-green);
+}
+
+@media (max-width: 480px) {
+    .recharge-quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Sticky confirm bar */
+.recharge-confirm-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    background: var(--rc-bg);
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.recharge-confirm-btn {
+    width: min(720px, 100%);
+    background: linear-gradient(180deg, var(--rc-green), var(--rc-green-dark));
+    border: none;
+    color: #06231a;
+    font-weight: 700;
+    font-size: 1.02rem;
+    padding: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.recharge-confirm-btn:active {
+    transform: translateY(1px);
+}

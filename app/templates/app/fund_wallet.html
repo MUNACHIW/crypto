@@ -1,0 +1,71 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'app/fund_wallet.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="recharge-page">
+    <div class="recharge-panel-outer">
+
+        <!-- Top bar -->
+        <div class="recharge-topbar">
+            <a href="{% url 'fund' %}" class="recharge-back" aria-label="Back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </a>
+            <h1 class="recharge-title">Recharge Funds</h1>
+            <span class="recharge-topbar-spacer"></span>
+        </div>
+
+        <!-- Balance + amount input -->
+        <form method="post" action="{% url 'fund_wallet' %}" id="rechargeForm">
+            {% csrf_token %}
+
+            <div class="recharge-card">
+                <div class="recharge-balance-row">
+                    <span class="recharge-balance-label">Your Balance:</span>
+                    <span class="recharge-balance-value">${{ balance|default:"0.00" }}</span>
+                </div>
+
+                <div class="recharge-amount-row">
+                    <input type="number" step="any" min="0" name="amount" id="rechargeAmount"
+                        class="recharge-amount-input" placeholder="0" inputmode="decimal" autocomplete="off">
+                    <button type="button" class="recharge-clear-btn" id="rechargeClearBtn" aria-label="Clear amount">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick amounts -->
+            <h2 class="recharge-section-title">Amount Money</h2>
+
+            <div class="recharge-quick-grid">
+                <button type="button" class="recharge-quick-btn" data-amount="100">$100</button>
+                <button type="button" class="recharge-quick-btn" data-amount="200">$200</button>
+                <button type="button" class="recharge-quick-btn" data-amount="500">$500</button>
+                <button type="button" class="recharge-quick-btn" data-amount="1000">$1000</button>
+                <button type="button" class="recharge-quick-btn" data-amount="2000">$2000</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!-- Sticky confirm bar -->
+<div class="recharge-confirm-bar">
+    <button type="submit" form="rechargeForm" class="recharge-confirm-btn">Confirm</button>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'app/fund_wallet.js' %}"></script>
+{% endblock %}

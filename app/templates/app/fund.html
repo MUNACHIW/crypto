@@ -1,0 +1,56 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'app/fund.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="fund-page">
+    <div class="fund-panel-outer">
+
+        <!-- Top bar -->
+        <div class="fund-topbar">
+            <a href="{% url 'dashboard' %}" class="fund-back" aria-label="Back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </a>
+            <h1 class="fund-title">Choose Payment Method</h1>
+            <span class="fund-topbar-spacer"></span>
+        </div>
+
+        <!-- Payment method groups -->
+        <div class="fund-group">
+            <a href="{% url 'fund_wallet' %}" class="fund-option">
+                <span class="fund-option-label">Wallet transactions</span>
+                <span class="fund-option-main">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="fund-option-icon">
+                        <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+                        <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+                        <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
+                    </svg>
+                    <span class="fund-option-name">Fund Wallet</span>
+                </span>
+            </a>
+        </div>
+
+        <div class="fund-group">
+            <a href="#" class="fund-option">
+                <span class="fund-option-label">Card/bank account</span>
+                <span class="fund-option-main">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="fund-option-icon">
+                        <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                        <line x1="2" y1="10" x2="22" y2="10"></line>
+                    </svg>
+                    <span class="fund-option-name">Credit/debit card</span>
+                </span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

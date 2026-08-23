@@ -1,0 +1,99 @@
+:root {
+    --fund-bg: #0a0a0c;
+    --fund-panel: #16171b;
+    --fund-line: rgba(255, 255, 255, 0.08);
+    --fund-text: #f5f5f7;
+    --fund-muted: rgba(245, 245, 247, 0.5);
+}
+
+.page-shell .topbar { display: none !important; }
+.page-shell { padding-top: 0 !important; background: var(--fund-bg) !important; }
+
+.fund-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: var(--fund-bg);
+    padding: 20px 16px 40px;
+}
+
+.fund-panel-outer {
+    width: min(720px, 100%);
+}
+
+/* Top bar */
+.fund-topbar {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    padding: 6px 0 22px;
+}
+
+.fund-back {
+    color: var(--fund-text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+.fund-back svg { width: 22px; height: 22px; }
+
+.fund-title {
+    margin: 0;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--fund-text);
+}
+
+.fund-topbar-spacer {
+    width: 32px;
+}
+
+/* Payment method groups */
+.fund-group {
+    margin-bottom: 14px;
+}
+
+.fund-option {
+    display: block;
+    background: var(--fund-panel);
+    border: 1px solid var(--fund-line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    text-decoration: none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.fund-option:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    background: #1b1c21;
+}
+
+.fund-option-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--fund-muted);
+    margin-bottom: 8px;
+}
+
+.fund-option-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fund-option-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--fund-text);
+    flex-shrink: 0;
+}
+
+.fund-option-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--fund-text);
+}

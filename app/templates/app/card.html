@@ -1,0 +1,93 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'app/card.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="card-page">
+    <div class="card-panel-outer">
+
+        <!-- Top bar -->
+        <div class="card-topbar">
+            <a href="{% url 'dashboard' %}" class="card-back" aria-label="Back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </a>
+            <h1 class="card-title"> MASTER CARDS</h1>
+            <span class="card-topbar-spacer"></span>
+        </div>
+
+        <!-- Available cards -->
+        <p class="card-section-label">Available Cards</p>
+        <div class="card-list-panel">
+            {% for c in cards %}
+            <div class="card-item">
+                <div class="card-item-main">
+                    <span class="card-item-type">{{ c.card_type }}</span>
+                    <span class="card-item-number">•••• {{ c.last4 }}</span>
+                </div>
+                <span class="card-item-balance">${{ c.balance|default:"0.00" }}</span>
+            </div>
+            {% empty %}
+            <div class="card-empty">No cards available</div>
+            {% endfor %}
+        </div>
+
+        <!-- Apply for a card -->
+        <div class="card-apply-heading">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="card-apply-icon">
+                <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                <line x1="2" y1="10" x2="22" y2="10"></line>
+            </svg>
+            <h2>Apply for QFS card</h2>
+
+
+
+        </div>
+        <p>I want fund my card with</p>
+
+        <form method="post" action="" class="card-apply-form">
+            {% csrf_token %}
+
+            <label for="cardType" class="card-field-label">Card Type</label>
+            <select name="card_type" id="cardType" class="card-select">
+                <option value="Qfs">Qfs Master Card</option>
+                <option value="visa">Qfs Visa Card</option>
+            </select>
+
+            <label for="topupAmount" class="card-field-label">address</label>
+            <div class="card-amount-row">
+                <input type="text" step="any" min="0" name="topup_amount" id="topupAmount" class="card-amount-input"
+                    placeholder="Please enter a valid address" inputmode="decimal" autocomplete="off">
+            </div>
+
+            <button type="submit" class="card-apply-btn">Apply</button>
+        </form>
+        <p>I want fund my card with</p>
+
+        <form method="post" action="" class="card-apply-form">
+            {% csrf_token %}
+
+            <label for="cardType" class="card-field-label">Card Type</label>
+            <select name="card_type" id="cardType" class="card-select">
+                <option value="Qfs">WEB3 Master Card</option>
+                <option value="visa">WEB3 Visa Card</option>
+            </select>
+
+            <label for="topupAmount" class="card-field-label">address</label>
+            <div class="card-amount-row">
+                <input type="text" step="any" min="0" name="topup_amount" id="topupAmount" class="card-amount-input"
+                    placeholder="Please enter a valid address" inputmode="decimal" autocomplete="off">
+            </div>
+
+            <button type="submit" class="card-apply-btn">Apply</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
