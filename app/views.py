@@ -13,8 +13,12 @@ def home(request):
 
 def wallet(request):
     return render(request, "app/wallet.html" )
+@login_required
 def earn(request):
     return render(request, "app/earn.html")
+@login_required
+def swap(request):
+    return render(request, "app/swap.html")
 
 
 @login_required

@@ -8,6 +8,7 @@ urlpatterns = [
     path("wallet/", views.wallet, name='wallet' ),
     path("dashboard/", views.dashboard, name="dashboard"),
     path("earn/", views.earn, name="earn"),
+    path('swap/', views.swap, name="swap"),
     path("register/", views.signup, name="register"),
     path("signup/", views.signup, name="signup"),
     path("login/", views.CustomLoginView.as_view(), name="login"),

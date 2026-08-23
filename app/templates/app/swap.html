@@ -1,0 +1,157 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'app/swap.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="swap-page">
+    <div class="swap-panel-outer">
+
+        <!-- Top bar -->
+        <div class="swap-topbar">
+            <a href="{% url 'dashboard' %}" class="swap-back" aria-label="Back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </a>
+            <div class="swap-title-wrap">
+                <h1 class="swap-title">Exchange</h1>
+                <p class="swap-subtitle">Swap Crypto</p>
+            </div>
+            <span class="swap-topbar-spacer"></span>
+        </div>
+
+        <!-- Swap card -->
+        <form method="post" action="{% url 'swap' %}" id="swapForm" class="swap-card">
+            {% csrf_token %}
+
+            <div class="swap-field">
+                <label for="fromCoin" class="swap-label">From</label>
+                <button type="button" class="swap-coin-select" id="fromCoinSelect" data-target="from">
+                    <span class="swap-coin-icon-display btc" id="fromCoinIcon"><img
+                            src="{% static 'app/image/coin-1.jpg' %}" alt="BTC"></span>
+                    <span class="swap-coin-name" id="fromCoinLabel">BTC</span>
+                    <span class="swap-coin-balance">Balance: <span id="fromCoinBalance">0.00000000</span></span>
+                    <i class="bi bi-chevron-down swap-coin-chevron"></i>
+                </button>
+                <input type="hidden" name="from_coin" id="fromCoinInput" value="BTC">
+            </div>
+
+            <div class="swap-divider"></div>
+
+            <div class="swap-field">
+                <label for="swapAmount" class="swap-label">Amount</label>
+                <input type="number" step="any" min="0" name="amount" id="swapAmount" class="swap-amount-input"
+                    placeholder="Please enter amount" inputmode="decimal" autocomplete="off">
+            </div>
+
+            <div class="swap-field">
+                <label for="toCoin" class="swap-label">To</label>
+                <button type="button" class="swap-coin-select" id="toCoinSelect" data-target="to">
+                    <span class="swap-coin-icon-display btc" id="toCoinIcon"><img
+                            src="{% static 'app/image/coin-1.jpg' %}" alt="BTC"></span>
+                    <span class="swap-coin-name" id="toCoinLabel">BTC</span>
+                    <span class="swap-coin-balance">Balance: <span id="toCoinBalance">0.00000000</span></span>
+                    <i class="bi bi-chevron-down swap-coin-chevron"></i>
+                </button>
+                <input type="hidden" name="to_coin" id="toCoinInput" value="BTC">
+            </div>
+        </form>
+
+        <!-- Coin picker modal, shared between From/To -->
+        <div class="modal fade wallet-modal" id="coinPickerModal" tabindex="-1" aria-labelledby="coinPickerModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="coinPickerModalLabel">Select a coin</h5>
+                        <button type="button" class="btn-close btn-close-white" data-modal-close
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="swap-coin-list">
+                            {% for coin in coins %}
+                            <button type="button" class="swap-coin-option" data-symbol="{{ coin.symbol }}"
+                                data-balance="{{ coin.balance|default:'0.00000000' }}">
+                                <span class="swap-coin-option-icon {{ coin.slug }}">
+                                    {% if coin.logo %}<img src="{% static coin.logo %}" alt="{{ coin.symbol }}">{% else
+                                    %}{{ coin.symbol|slice:":1" }}{% endif %}
+                                </span>
+                                <span class="swap-coin-option-symbol">{{ coin.symbol }}</span>
+                                <span class="swap-coin-option-balance">{{ coin.balance|default:"0.00000000" }}</span>
+                            </button>
+                            {% empty %}
+                            <button type="button" class="swap-coin-option" data-symbol="BTC" data-balance="0.00000000">
+                                <span class="swap-coin-option-icon btc"><img src="{% static 'app/image/coin-1.jpg' %}"
+                                        alt="BTC"></span>
+                                <span class="swap-coin-option-symbol">BTC</span>
+                                <span class="swap-coin-option-balance">0.00000000</span>
+                            </button>
+                            <button type="button" class="swap-coin-option" data-symbol="ETH" data-balance="0.00000000">
+                                <span class="swap-coin-option-icon eth"><img src="{% static 'app/image/coin-3.jpg' %}"
+                                        alt="ETH"></span>
+                                <span class="swap-coin-option-symbol">ETH</span>
+                                <span class="swap-coin-option-balance">0.00000000</span>
+                            </button>
+                            <button type="button" class="swap-coin-option" data-symbol="XRP" data-balance="0.00000000">
+                                <span class="swap-coin-option-icon xrp"><img src="{% static 'app/image/download.png' %}"
+                                        alt="XRP"></span>
+                                <span class="swap-coin-option-symbol">XRP</span>
+                                <span class="swap-coin-option-balance">0.00000000</span>
+                            </button>
+                            <button type="button" class="swap-coin-option" data-symbol="XLM" data-balance="0.00000000">
+                                <span class="swap-coin-option-icon xlm"><img src="{% static 'app/image/xlm.png' %}"
+                                        alt="XLM"></span>
+                                <span class="swap-coin-option-symbol">XLM</span>
+                                <span class="swap-coin-option-balance">0.00000000</span>
+                            </button>
+                            <button type="button" class="swap-coin-option" data-symbol="DOGE" data-balance="0.00000000">
+                                <span class="swap-coin-option-icon doge"><img src="{% static 'app/image/doge.png' %}"
+                                        alt="DOGE"></span>
+                                <span class="swap-coin-option-symbol">DOGE</span>
+                                <span class="swap-coin-option-balance">0.00000000</span>
+                            </button>
+                            <button type="button" class="swap-coin-option" data-symbol="LTC" data-balance="0.00000000">
+                                <span class="swap-coin-option-icon ltc"><img src="{% static 'app/image/ltc.png' %}"
+                                        alt="LTC"></span>
+                                <span class="swap-coin-option-symbol">LTC</span>
+                                <span class="swap-coin-option-balance">0.00000000</span>
+                            </button>
+                            <button type="button" class="swap-coin-option" data-symbol="SOL" data-balance="0.00000000">
+                                <span class="swap-coin-option-icon sol"><img src="{% static 'app/image/sol.png' %}"
+                                        alt="SOL"></span>
+                                <span class="swap-coin-option-symbol">SOL</span>
+                                <span class="swap-coin-option-balance">0.00000000</span>
+                            </button>
+                            <button type="button" class="swap-coin-option" data-symbol="WLFI" data-balance="0.00000000">
+                                <span class="swap-coin-option-icon wlfi"><img src="{% static 'app/image/wlfi.jpg' %}"
+                                        alt="WLFI"></span>
+                                <span class="swap-coin-option-symbol">WLFI</span>
+                                <span class="swap-coin-option-balance">0.00000000</span>
+                            </button>
+                            <button type="button" class="swap-coin-option" data-symbol="SHIB" data-balance="0.00000000">
+                                <span class="swap-coin-option-icon shib">S</span>
+                                <span class="swap-coin-option-symbol">SHIB</span>
+                                <span class="swap-coin-option-balance">0.00000000</span>
+                            </button>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sticky confirm bar -->
+<div class="swap-confirm-bar">
+    <button type="submit" form="swapForm" class="swap-confirm-btn">Confirm</button>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'app/swap.js' %}"></script>
+{% endblock %}
