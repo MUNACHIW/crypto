@@ -13,6 +13,8 @@ def home(request):
 
 def wallet(request):
     return render(request, "app/wallet.html" )
+def earn(request):
+    return render(request, "app/earn.html")
 
 
 @login_required
