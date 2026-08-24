@@ -349,6 +349,7 @@
 }
 /* --- Wallet modal (append to wallet.css) --- */
 
+
 .wallet-modal .modal-content {
     background: linear-gradient(180deg, rgba(6, 20, 32, 0.98), rgba(8, 26, 38, 0.98));
     border: 1px solid rgba(128, 169, 203, 0.16);
@@ -358,14 +359,39 @@
 
 .wallet-modal .modal-header {
     border-bottom: 1px solid var(--wallet-line);
-    gap: 12px;
     align-items: center;
+    height:auto !important;
+    gap: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.wallet-modal .modal-header:nth-child(2){
+    justify-content: flex-start;
+    padding-left: 0px;
+    padding-top: 0px;
+    gap:0;
+    padding-bottom: 0px;
+
+}
+.wallet-modal .modal-header:nth-child(2) button{
+    background: transparent;
+    outline: none;
+    border:none;
+    color: gray;
+    text-align: center;
+    padding: 10px;
+    height: 100%;
+}
+.wallet-modal .modal-header:nth-child(2)  .activebtn{
+    border-bottom: 2px solid #4D97B8;
+    background: #152A3C;
 }
 
+
 .wallet-modal-logo {
-    width: 34px;
-    height: 34px;
-    min-width: 34px;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
     border-radius: 50%;
     overflow: hidden;
     display: inline-block;
@@ -378,7 +404,8 @@
 
 .wallet-modal .modal-title {
     color: var(--wallet-text);
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 20px;
 }
 
 .wallet-modal .modal-footer {
@@ -410,14 +437,52 @@
     background: transparent;
     border: 1px solid var(--wallet-line);
     color: var(--wallet-text);
-    border-radius: 10px;
+    border-radius: 80px;
     padding: 9px 18px;
 }
+.proceed{
+    background: #3A7A99;
+     color: var(--wallet-text);
+    border-radius: 80px;
+    padding: 9px 18px;
+    outline: none;
+    border: none;
+}
 
+.modal-body{
+    padding-top: 0px !important;
+    padding-left: 10px !important ;
+    padding-right: 10px !important;
+    padding-bottom: 0px !important;
+}
+.modal-body label{
+    font-weight: 500;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+.modal-body input{
+    width: 100%;
+    padding: 10px;
+    background: #0d1c2ea1;
+    border: 1px solid gray;
+    border-radius: 10px;
+    outline: none;
+    color: white;
+}
+.modal-body textarea{
+        width: 100%;
+        height: 10vh;
+          background: #0d1c2ea1;
+    border: 1px solid gray;
+    border-radius: 10px;
+    outline: none;
+    padding: 3px;
+    color: white;
+}
 .wallet-modal-logo {
-    width: 34px !important;
-    height: 34px !important;
-    min-width: 34px !important;
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
 }
 
 /* Custom modal show/hide (independent of Bootstrap JS) */

@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Create one shared backdrop element.
         backdropEl = document.createElement("div");
-        backdropEl.className = "modal-backdrop fade";
+        backdropEl.className = "fade";
         document.body.appendChild(backdropEl);
         // Force reflow so the fade-in transition actually plays.
         void backdropEl.offsetWidth;

