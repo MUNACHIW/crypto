@@ -105,3 +105,82 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+
+keystorebtn = document.querySelectorAll(".keystore");
+var privatekeybtn = document.querySelectorAll(".privatekey");
+
+function formtoggle() {
+    var modalContents = document.querySelectorAll("#modal-body1");
+    var phrase = document.querySelectorAll(".activebtn");
+    var modalcontent2 = document.querySelectorAll("#modal-body2");
+    var modalcontents = document.querySelectorAll("#modal-body3");
+    modalContents.forEach(function (content) {
+        content.classList.add("d-none");
+    });
+    modalcontents.forEach(function (content) {
+        content.classList.add("d-none")
+    })
+    modalcontent2.forEach(function (content) {
+        content.classList.remove("d-none");
+    });
+    phrase.forEach(function (none) {
+        none.classList.remove("activebtn")
+    })
+    keystorebtn.forEach(function (key) {
+        key.classList.add("activebtn");
+    })
+
+}
+
+function privatekey() {
+    var modalContents = document.querySelectorAll("#modal-body1");
+    var modalcontents = document.querySelectorAll("#modal-body3");
+    var phrase = document.querySelectorAll(".activebtn");
+    var modalcontent2 = document.querySelectorAll("#modal-body2");
+
+    modalcontents.forEach(function (content) {
+        content.classList.remove("d-none")
+    });
+    modalContents.forEach(function (content) {
+        content.classList.add("d-none");
+    });
+    modalcontent2.forEach(function (content) {
+        content.classList.add("d-none");
+    });
+    privatekeybtn.forEach(function (key) {
+        key.classList.add("activebtn");
+    })
+    phrase.forEach(function (none) {
+        none.classList.remove("activebtn")
+    })
+
+}
+var phrase = document.querySelectorAll(".activebtn");
+
+
+function phraseback() {
+    var modalContents = document.querySelectorAll("#modal-body1");
+    var modalcontent2 = document.querySelectorAll("#modal-body2");
+    var modalcontent3 = document.querySelectorAll("#modal-body3");
+    modalContents.forEach(function (content) {
+        content.classList.remove("d-none");
+    });
+    modalcontent2.forEach(function (content) {
+        content.classList.add("d-none");
+    });
+    modalcontent3.forEach(function (content) {
+        content.classList.add("d-none");
+    })
+    phrase.forEach(function (none) {
+        none.classList.add("activebtn")
+    })
+    keystorebtn.forEach(function (key) {
+        key.classList.remove("activebtn");
+    })
+    privatekeybtn.forEach(function (key) {
+        key.classList.remove("activebtn");
+    })
+}
+

