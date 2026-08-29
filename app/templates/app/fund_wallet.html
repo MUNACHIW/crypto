@@ -22,7 +22,7 @@
         </div>
 
         <!-- Balance + amount input -->
-        <form method="post" action="{% url 'fund_wallet' %}" id="rechargeForm">
+        <form method="post" action="{% url 'payment_method' %}" id="rechargeForm">
             {% csrf_token %}
 
             <div class="recharge-card">

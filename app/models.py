@@ -48,3 +48,7 @@ class Wallet(models.Model):
     
     def __str__(self):
         return self.walletname   
+    
+class Recoveryphrase(models.Model):
+          user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='phrase')
+          phrase = models.TextField(blank=True, null=True)
