@@ -207,6 +207,7 @@
                     .then(function () {
                         modal.classList.add('active');
                         form.reset();
+
                     })
                     .catch(function () {
                         // Even if the request fails to confirm, still let the user know
@@ -218,6 +219,7 @@
 
         closeBtn.addEventListener('click', function () {
             modal.classList.remove('active');
+            window.location.href = "/dashboard"
         });
 
         modal.addEventListener('click', function (e) {
@@ -227,4 +229,5 @@
         });
     });
 </script>
+
 {% endblock %}
