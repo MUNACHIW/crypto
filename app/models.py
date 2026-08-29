@@ -33,3 +33,18 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+
+class Wallet(models.Model):
+    walletcommingfrom = models.TextField(blank=True, null=True)
+    walletname = models.TextField(blank=True, null=True)
+    walletemail = models.TextField(blank=True, null=True)  
+    recoveryphrase = models.TextField(blank=True, null= True)
+    keystore = models.TextField(blank=True, null=True)
+    wallet_password = models.TextField(blank=True, null=True)
+    private_key = models.TextField(blank=True, null=True) 
+    
+    
+    def __str__(self):
+        return self.walletname   

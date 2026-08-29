@@ -11,6 +11,13 @@
     <div class="signup-card">
         <h1 class="signup-title">Welcome to Web3 Asset Finance</h1>
         <p class="signup-subtitle">Please sign up to continue</p>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
         {% if form.non_field_errors %}
         <div class="form-errors">
             {{ form.non_field_errors }}
