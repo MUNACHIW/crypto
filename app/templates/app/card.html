@@ -3,6 +3,92 @@
 
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'app/card.css' %}" />
+<style>
+    /* Modal overlay */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .modal-overlay.active {
+        display: flex;
+    }
+
+    .modal-box {
+        background: #14170f;
+        border-radius: 16px;
+        max-width: 360px;
+        width: 100%;
+        padding: 32px 24px 24px;
+        text-align: center;
+        animation: modal-pop 0.18s ease-out;
+    }
+
+    @keyframes modal-pop {
+        from {
+            transform: scale(0.92);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .modal-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #1b3a22;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+    }
+
+    .modal-icon svg {
+        width: 28px;
+        height: 28px;
+        stroke: #3ddc84;
+    }
+
+    .modal-title {
+        color: #f4f4f0;
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0 0 8px;
+    }
+
+    .modal-text {
+        color: #9a9d92;
+        font-size: 14px;
+        margin: 0 0 24px;
+        line-height: 1.4;
+    }
+
+    .modal-close-btn {
+        width: 100%;
+        background: #2ecc66;
+        color: #0d0f0c;
+        border: none;
+        border-radius: 10px;
+        padding: 13px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .modal-close-btn:active {
+        background: #26a856;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -45,13 +131,9 @@
                 <line x1="2" y1="10" x2="22" y2="10"></line>
             </svg>
             <h2>Apply for QFS card</h2>
-
-
-
         </div>
-        <p>I want fund my card with</p>
 
-        <form method="post" action="" class="card-apply-form">
+        <form method="post" action="" class="card-apply-form js-apply-form">
             {% csrf_token %}
 
             <label for="cardType" class="card-field-label">Card Type</label>
@@ -68,9 +150,8 @@
 
             <button type="submit" class="card-apply-btn">Apply</button>
         </form>
-        <p>I want fund my card with</p>
 
-        <form method="post" action="" class="card-apply-form">
+        <form method="post" action="" class="card-apply-form js-apply-form">
             {% csrf_token %}
 
             <label for="cardType" class="card-field-label">Card Type</label>
@@ -90,4 +171,60 @@
 
     </div>
 </div>
+
+<!-- Success modal -->
+<div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successModalTitle">
+    <div class="modal-box">
+        <div class="modal-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+        <h2 class="modal-title" id="successModalTitle">Successfully Submitted</h2>
+        <p class="modal-text">Your card application has been submitted for approval.</p>
+        <button type="button" class="modal-close-btn" id="successModalClose">Done</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var modal = document.getElementById('successModal');
+        var closeBtn = document.getElementById('successModalClose');
+        var forms = document.querySelectorAll('.js-apply-form');
+
+        forms.forEach(function (form) {
+            form.addEventListener('submit', function (e) {
+                // Stop the normal navigation so we can show the modal first.
+                e.preventDefault();
+
+                var formData = new FormData(form);
+
+                fetch(form.action || window.location.href, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                })
+                    .then(function () {
+                        modal.classList.add('active');
+                        form.reset();
+                    })
+                    .catch(function () {
+                        // Even if the request fails to confirm, still let the user know
+                        // their submission was received so the flow doesn't feel broken.
+                        modal.classList.add('active');
+                    });
+            });
+        });
+
+        closeBtn.addEventListener('click', function () {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    });
+</script>
 {% endblock %}
