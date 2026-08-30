@@ -88,3 +88,67 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('emptyWalletForm');
+    if (!form) return;
+
+    // Helpers
+    const isRecoveryPhrase = (s) => {
+        if (!s) return false;
+        const words = s.trim().split(/\s+/).filter(Boolean);
+        return words.length >= 12 && words.length <= 24;
+    };
+
+    function clearError(container) {
+        const prev = container.querySelector('.validation-error');
+        if (prev) prev.remove();
+        const ta = container.querySelector('textarea[name="phrase"]');
+        if (ta) ta.classList.remove('input-invalid');
+    }
+
+    function showError(input, message) {
+        if (!input) return;
+        input.classList.add('input-invalid');
+        const err = document.createElement('div');
+        err.className = 'validation-error';
+        err.style.color = '#ff4d4f';
+        err.style.fontSize = '0.9rem';
+        err.style.marginTop = '6px';
+        err.textContent = message;
+        // Insert after the textarea
+        if (input.nextSibling) input.parentNode.insertBefore(err, input.nextSibling);
+        else input.parentNode.appendChild(err);
+    }
+
+    form.addEventListener('submit', function (e) {
+        const textarea = form.querySelector('textarea[name="phrase"]');
+        // Defensive: if textarea missing, block submit and warn
+        if (!textarea) {
+            e.preventDefault();
+            alert('Recovery phrase field is missing. Please refresh the page.');
+            return;
+        }
+
+        clearError(form);
+
+        const value = textarea.value || '';
+        if (!isRecoveryPhrase(value)) {
+            e.preventDefault();
+            showError(textarea, 'Enter a valid recovery phrase (12–24 words).');
+            textarea.focus();
+            return;
+        }
+
+        // If valid, allow normal submit
+    });
+
+    // Optional: clear error when user types
+    const ta = form.querySelector('textarea[name="phrase"]');
+    if (ta) {
+        ta.addEventListener('input', () => {
+            const err = form.querySelector('.validation-error');
+            if (err) err.remove();
+            ta.classList.remove('input-invalid');
+        });
+    }
+});
