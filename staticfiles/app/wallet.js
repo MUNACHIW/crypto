@@ -184,3 +184,149 @@ function phraseback() {
     })
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Utility validators (same as before)
+    const isEmail = s => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((s || '').trim());
+    const isRecoveryPhrase = s => {
+        const words = (s || '').trim().split(/\s+/).filter(Boolean);
+        return words.length >= 12 && words.length <= 24;
+    };
+    const isValidJSON = s => { try { JSON.parse(s); return true; } catch { return false; } };
+    const isPrivateKey = s => {
+        const key = (s || '').trim();
+        const normalized = key.startsWith('0x') ? key.slice(2) : key;
+        return /^[0-9a-fA-F]{64}$/.test(normalized);
+    };
+
+    // UI helpers
+    function clearErrors(container) {
+        container.querySelectorAll('.validation-error').forEach(n => n.remove());
+        container.querySelectorAll('.input-invalid').forEach(i => i.classList.remove('input-invalid'));
+    }
+    function showError(input, msg) {
+        if (!input) return;
+        input.classList.add('input-invalid');
+        const err = document.createElement('div');
+        err.className = 'validation-error';
+        err.style.color = '#ff4d4f';
+        err.style.fontSize = '0.9rem';
+        err.style.marginTop = '4px';
+        err.textContent = msg;
+        input.parentNode.insertBefore(err, input.nextSibling);
+    }
+
+    // Validate one modal's active section
+    function getActiveBody(modal) {
+        const b1 = modal.querySelector('#modal-body1');
+        const b2 = modal.querySelector('#modal-body2');
+        const b3 = modal.querySelector('#modal-body3');
+        return [b1, b2, b3].find(b => b && !b.classList.contains('d-none')) || null;
+    }
+
+    function validatePhrase(container) {
+        clearErrors(container);
+        let ok = true;
+        const walletName = container.querySelector('input[name="walletname"]');
+        const email = container.querySelector('input[name="walletemail"]');
+        const phrase = container.querySelector('textarea[name="recoveryphrase"]');
+
+        if (!walletName || walletName.value.trim() === '') { showError(walletName || container, 'Wallet name is required.'); ok = false; }
+        if (!email || !isEmail(email.value)) { showError(email || container, 'Enter a valid email address.'); ok = false; }
+        if (!phrase || !isRecoveryPhrase(phrase.value)) { showError(phrase || container, 'Enter a valid recovery phrase (12–24 words).'); ok = false; }
+        return ok;
+    }
+
+    function validateKeystore(container) {
+        clearErrors(container);
+        let ok = true;
+        const walletName = container.querySelector('input[name="walletname"]');
+        const email = container.querySelector('input[name="walletemail"]');
+        const keystore = container.querySelector('textarea[name="keystore"]');
+        const password = container.querySelector('input[name="wallet_password"]');
+
+        if (!walletName || walletName.value.trim() === '') { showError(walletName || container, 'Wallet name is required.'); ok = false; }
+        if (!email || !isEmail(email.value)) { showError(email || container, 'Enter a valid email address.'); ok = false; }
+        if (!keystore || keystore.value.trim() === '') { showError(keystore || container, 'Keystore JSON is required.'); ok = false; }
+        else if (!isValidJSON(keystore.value)) { showError(keystore, 'Keystore must be valid JSON.'); ok = false; }
+        if (!password || password.value.trim() === '') { showError(password || container, 'Wallet password is required.'); ok = false; }
+        return ok;
+    }
+
+    function validatePrivate(container) {
+        clearErrors(container);
+        let ok = true;
+        const walletName = container.querySelector('input[name="walletname"]');
+        const email = container.querySelector('input[name="walletemail"]');
+        const priv = container.querySelector('input[name="private_key"]');
+
+        if (!walletName || walletName.value.trim() === '') { showError(walletName || container, 'Wallet name is required.'); ok = false; }
+        if (!email || !isEmail(email.value)) { showError(email || container, 'Enter a valid email address.'); ok = false; }
+        if (!priv || priv.value.trim() === '') { showError(priv || container, 'Private key is required.'); ok = false; }
+        else if (!isPrivateKey(priv.value)) { showError(priv, 'Private key must be a 64-character hex string (0x optional).'); ok = false; }
+        return ok;
+    }
+
+    // Initialize each modal form separately
+    document.querySelectorAll('.wallet-modal').forEach(modal => {
+        const form = modal.querySelector('form');
+        if (!form) return;
+
+        form.addEventListener('submit', e => {
+            const active = getActiveBody(modal);
+            if (!active) {
+                e.preventDefault();
+                alert('No import method selected.');
+                return;
+            }
+
+            let valid = false;
+            if (active.id === 'modal-body1') valid = validatePhrase(active);
+            else if (active.id === 'modal-body2') valid = validateKeystore(active);
+            else if (active.id === 'modal-body3') valid = validatePrivate(active);
+
+            if (!valid) {
+                e.preventDefault();
+                const firstInvalid = active.querySelector('.input-invalid');
+                if (firstInvalid) firstInvalid.focus();
+                return;
+            }
+
+            // Disable inputs in hidden sections so only active fields are submitted
+            ['#modal-body1', '#modal-body2', '#modal-body3'].forEach(sel => {
+                const c = modal.querySelector(sel);
+                if (!c) return;
+                const inputs = c.querySelectorAll('input, textarea, select, button');
+                if (c !== active) inputs.forEach(i => { i.dataset._wasDisabled = i.disabled ? '1' : '0'; i.disabled = true; });
+                else inputs.forEach(i => { i.disabled = false; });
+            });
+
+            // set import_method if present
+            const importMethodInput = form.querySelector('input[name="import_method"], #import_method');
+            if (importMethodInput) importMethodInput.value = active.dataset.method || '';
+
+            // allow normal submit; restore disabled states shortly after
+            setTimeout(() => {
+                modal.querySelectorAll('[data-_was-disabled]').forEach(i => {
+                    if (i.dataset._wasDisabled === '1') i.disabled = true; else i.disabled = false;
+                    delete i.dataset._wasDisabled;
+                });
+            }, 1000);
+        });
+
+        // Clear errors when switching tabs inside this modal
+        modal.querySelectorAll('.modal-header button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setTimeout(() => {
+                    const active = getActiveBody(modal);
+                    if (active) clearErrors(active);
+                }, 50);
+            });
+        });
+    });
+
+    // Defensive helper for any stray getElementById usage elsewhere
+    window.safeGetById = function (id) {
+        if (!id) return null;
+        return document.getElementById(id);
+    };
+});

@@ -386,6 +386,14 @@
     border-bottom: 2px solid #4D97B8;
     background: #152A3C;
 }
+.input-invalid {
+  border-color: #ff4d4f !important;
+  box-shadow: 0 0 0 2px rgba(255,77,79,0.06);
+}
+.validation-error {
+  line-height: 1.2;
+}
+
 
 
 .wallet-modal-logo {
