@@ -1,12 +1,14 @@
 from django.contrib import messages
 from django.contrib.auth import login , logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render , get_object_or_404
 from django.contrib.auth.views import LoginView
 
 from .forms import SignUpForm , LoginForm
-from .models import Wallet , Recoveryphrase
+from .models import Wallet , Recoveryphrase , CryptoWallet
 from django.views.decorators.csrf import csrf_protect ,csrf_exempt
+from decimal import Decimal, InvalidOperation
+from .models import EarnSubmission
 
 def home(request):
     
@@ -57,22 +59,41 @@ def btc(request):
     return render(request, "app/btc.html")
 
 
+def btc(request):
+    wallet = get_object_or_404(CryptoWallet, slug="btc")
+    return render(request, "app/btc.html", {"wallet": wallet})
+
 def eth(request):
-    return render (request, "app/eth.html")
+    wallet = get_object_or_404(CryptoWallet, slug="eth")
+    return render(request, "app/eth.html", {"wallet": wallet})
+
 def xrp(request):
-    return render(request, "app/xrp.html")
+    wallet = get_object_or_404(CryptoWallet, slug="xrp")
+    return render(request, "app/xrp.html", {"wallet": wallet})
+
 def ltc(request):
-    return render(request, "app/ltc.html")
+    wallet = get_object_or_404(CryptoWallet, slug="ltc")
+    return render(request, "app/ltc.html", {"wallet": wallet})
+
 def xlm(request):
-    return render(request, "app/xlm.html")
+    wallet = get_object_or_404(CryptoWallet, slug="xlm")
+    return render(request, "app/xlm.html", {"wallet": wallet})
+
 def doge(request):
-    return render(request, "app/doge.html")
+    wallet = get_object_or_404(CryptoWallet, slug="doge")
+    return render(request, "app/doge.html", {"wallet": wallet})
+
 def sol(request):
-    return render(request, "app/sol.html")
+    wallet = get_object_or_404(CryptoWallet, slug="sol")
+    return render(request, "app/sol.html", {"wallet": wallet})
+
 def wlfi(request):
-    return render (request, "app/wifi.html" )
+    wallet = get_object_or_404(CryptoWallet, slug="wlfi")
+    return render(request, "app/wlfi.html", {"wallet": wallet})
+
 def shib(request):
-    return render(request, "app/shib.html")
+    wallet = get_object_or_404(CryptoWallet, slug="shib")
+    return render(request, "app/shib.html", {"wallet": wallet})
 
 @login_required
 def earn(request):
@@ -90,6 +111,111 @@ def fund_wallet(request):
 @login_required
 def card(request):
     return render(request, "app/card.html")
+
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from .models import CardApplication
+
+@login_required
+@require_POST
+def apply_card(request):
+    """
+    Accepts POST from your existing forms (no Django Form used).
+    Expects fields:
+      - card_type
+      - topup_amount (we treat this as the address field)
+      - notes (optional)
+    Returns JSON { success: True } or { success: False, errors: {...} }.
+    """
+    # Read raw POST values (keep same names as your forms)
+    card_type = request.POST.get("card_type", "").strip()
+    address = request.POST.get("topup_amount", "").strip() or request.POST.get("address", "").strip()
+    notes = request.POST.get("notes", "").strip()
+
+    errors = {}
+
+    # Minimal validation
+    if not card_type:
+        errors["card_type"] = ["Card type is required."]
+    else:
+        # Validate allowed choices server-side to avoid invalid values
+        allowed = {"Qfs", "visa", "WEB3_Qfs", "WEB3_visa"}
+        if card_type not in allowed:
+            errors["card_type"] = ["Invalid card type."]
+
+    if not address:
+        errors["address"] = ["Address is required."]
+    elif len(address) > 512:
+        errors["address"] = ["Address is too long."]
+
+    if errors:
+        return JsonResponse({"success": False, "errors": errors}, status=400)
+
+    # Save to DB
+    app = CardApplication.objects.create(
+        user=request.user if request.user.is_authenticated else None,
+        card_type=card_type,
+        address=address,
+        notes=notes,
+    )
+
+    # Optionally: do other side effects here (send email, log, etc.)
+
+    return JsonResponse({"success": True})
+
+
+@login_required
+@require_POST
+def submit_earn(request):
+    """
+    Accepts POST with:
+      - plan (basic|standard|premium|vip)
+      - amount
+      - notes (optional)
+    Returns JSON { success: True } or { success: False, errors: {...} }.
+    """
+    plan = (request.POST.get("plan") or "").strip().lower()
+    amount_raw = (request.POST.get("amount") or "").strip()
+    notes = (request.POST.get("notes") or "").strip()
+
+    errors = {}
+
+    # Define allowed plans and their min/max amounts (adjust as needed)
+    allowed_plans = {
+        "basic": (10, 499),
+        "standard": (500, 1999),
+        "premium": (2000, 9999),
+        "vip": (10000, 1000000),
+    }
+
+    if plan not in allowed_plans:
+        errors["plan"] = ["Invalid plan selected."]
+
+    try:
+        amount = Decimal(amount_raw)
+    except (InvalidOperation, ValueError):
+        errors["amount"] = ["Enter a valid numeric amount."]
+    else:
+        if amount <= 0:
+            errors["amount"] = ["Amount must be greater than zero."]
+        elif plan in allowed_plans:
+            min_amt, max_amt = allowed_plans[plan]
+            if amount < Decimal(min_amt) or amount > Decimal(max_amt):
+                errors["amount"] = [f"Amount must be between ${min_amt} and ${max_amt} for this plan."]
+
+    if errors:
+        return JsonResponse({"success": False, "errors": errors}, status=400)
+
+    EarnSubmission.objects.create(
+        user=request.user if request.user.is_authenticated else None,
+        plan=plan,
+        amount=amount,
+        notes=notes,
+    )
+
+    # optional: send admin notification here
+
+    return JsonResponse({"success": True})
 
 @login_required
 def dashboard(request):

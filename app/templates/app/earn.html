@@ -9,6 +9,7 @@
 
     .page-shell {
         background: black !important;
+        padding-top: 0 !important;
     }
 
     html,
@@ -16,254 +17,393 @@
         background: black;
     }
 
-    body {
-        background: black;
-    }
-
-    .page-shell {
-        padding-top: 0 !important;
-    }
-
-    .stake-page {
+    .earn-page {
         max-width: 90%;
         margin: 0 auto;
         padding: 10px 16px 40px;
         color: #ffffff;
     }
 
-    .stake-page-header {
+    .earn-header {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 8px 0 2px;
-        width: 100%;
     }
 
-    .stake-back-btn {
+    .earn-back-btn {
         position: absolute;
         left: 0;
         background: none;
         border: none;
-        color: #ffffff;
+        color: #fff;
         font-size: 1.4rem;
-        line-height: 1;
         padding: 4px 8px;
     }
 
-    .stake-page-header h1 {
+    .earn-header h1 {
         font-size: 1.15rem;
         font-weight: 700;
         margin: 0;
-        color: #ffffff;
+        color: #fff;
     }
 
-    .stake-page-subtitle {
+    .earn-subtitle {
         text-align: center;
         color: #9a9fa5;
         font-size: 0.85rem;
         margin: 2px 0 20px;
     }
 
-    .stake-plan-card {
-        background-color: #1c1f1e;
+    .plan-card {
+        background: #1c1f1e;
         border: 1px solid #2a2d2c;
         border-radius: 10px;
-        padding: 18px 18px 16px;
-        margin-bottom: 22px;
+        padding: 18px;
+        margin-bottom: 18px;
     }
 
-    .stake-row {
+    .plan-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 11px 0;
+        padding: 10px 0;
         border-bottom: 1px solid #2a2d2c;
     }
 
-    .stake-plan-card .stake-row:last-of-type {
+    .plan-row:last-of-type {
         border-bottom: none;
     }
 
-    .stake-row .label {
+    .label {
         color: #9a9fa5;
         font-size: 0.9rem;
     }
 
-    .stake-row .value {
-        color: #ffffff;
+    .value {
+        color: #fff;
         font-weight: 700;
-        font-size: 0.95rem;
     }
 
-    .stake-row.investment-row .value {
-        color: #6f7570;
-        font-weight: 400;
-    }
-
-    .stake-amount-input {
+    .amount-input {
         background: transparent;
         border: none;
         outline: none;
-        color: #ffffff;
+        color: #fff;
         text-align: right;
         font-size: 0.95rem;
         width: 60%;
     }
 
-    .stake-amount-input::placeholder {
+    .amount-input::placeholder {
         color: #6f7570;
     }
 
-    .stake-btn {
+    .earn-btn {
         display: block;
         width: 100%;
-        margin-top: 18px;
-        padding: 13px 0;
+        margin-top: 14px;
+        padding: 12px 0;
         border: none;
         border-radius: 10px;
-        background-color: #2fbf6f;
-        color: #ffffff;
-        font-weight: 700;
-        font-size: 1rem;
-        text-align: center;
-        transition: background-color 0.15s ease;
+        background: #2fbf6f;
+        color: #fff;
+        font-weight: bold !important;
+        cursor: pointer;
     }
 
-    .stake-btn:hover,
-    .stake-btn:focus {
-        background-color: #27a862;
-        color: #ffffff;
+    .earn-btn:hover {
+        background: #27a862;
+    }
+
+    /* Modal */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .modal-overlay.active {
+        display: flex;
+    }
+
+    .modal-box {
+        background: #14170f;
+        border-radius: 12px;
+        max-width: 420px;
+        width: 100%;
+        padding: 24px;
+        text-align: center;
+        color: #f4f4f0;
+    }
+
+    .modal-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0 0 8px;
+    }
+
+    .modal-text {
+        color: #9a9d92;
+        font-size: 14px;
+        margin: 0 0 12px;
+    }
+
+    .modal-error {
+        color: #ffb3b3;
+        font-size: 13px;
+        margin-bottom: 12px;
+        text-align: left;
+        display: none;
+    }
+
+    .modal-close-btn {
+        width: 100%;
+        background: #2ecc66;
+        color: #0d0f0c;
+        border: none;
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .modal-close-btn:active {
+        background: #26a856;
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="stake-page">
-
-    <div class="stake-page-header">
-        <button type="button" class="stake-back-btn" onclick="window.history.back();" aria-label="Go back">
-            <i class="bi bi-chevron-left"></i>
+<div class="earn-page">
+    <div class="earn-header my-2">
+        <button type="button" class="earn-back-btn fw-bold" onclick="window.history.back();" aria-label="Go back">
+            &larr;
         </button>
         <h1>Stake</h1>
     </div>
-    <p class="stake-page-subtitle">Select Stake Plan</p>
 
-    <!-- Silver Plan -->
-    <div class="stake-plan-card">
-        <div class="stake-row">
-            <span class="label">Stake plan</span>
-            <span class="value">Silver Plan</span>
+
+    <!-- Basic Plan -->
+    <form class="plan-card js-earn-form" method="post" action="{% url 'submit_earn' %}">
+        {% csrf_token %}
+        <input type="hidden" name="plan" value="basic" />
+        <div class="plan-row">
+            <span class="label">Stake Plan</span>
+            <span class="value"> Silver Plan</span>
         </div>
-        <div class="stake-row">
-            <span class="label">Minimum Amount</span>
+        <div class="plan-row">
+            <span class="label">Min</span>
             <span class="value">$500</span>
         </div>
-        <div class="stake-row">
-            <span class="label">Maximum Amount</span>
+        <div class="plan-row">
+            <span class="label">Max</span>
             <span class="value">$1120</span>
         </div>
-        <div class="stake-row investment-row">
-            <span class="label">Investment Amount</span>
-            <input type="text" class="stake-amount-input" placeholder="$ enter amount" />
+        <div class="plan-row">
+            <span class="label">Amount</span>
+            <input type="text" name="amount" class="amount-input" placeholder="$ enter amount" />
         </div>
-        <div class="stake-row">
-            <span class="label">R.O.I</span>
+        <div class="plan-row">
+            <span class="label">ROI</span>
             <span class="value">260%</span>
         </div>
-        <div class="stake-row">
+        <div class="plan-row">
             <span class="label">Duration</span>
             <span class="value">3 days</span>
         </div>
-        <button type="button" class="stake-btn">Stake</button>
-    </div>
+        <button type="submit" class="earn-btn">Stake</button>
+    </form>
 
-    <!-- Gold Plan -->
-    <div class="stake-plan-card">
-        <div class="stake-row">
-            <span class="label">Stake plan</span>
-            <span class="value">Gold Plan</span>
+    <!-- Standard Plan -->
+    <form class="plan-card js-earn-form" method="post" action="{% url 'submit_earn' %}">
+        {% csrf_token %}
+        <input type="hidden" name="plan" value="standard" />
+        <div class="plan-row">
+            <span class="label">Stake Plan</span>
+            <span class="value">Gold plan</span>
         </div>
-        <div class="stake-row">
-            <span class="label">Minimum Amount</span>
+        <div class="plan-row">
+            <span class="label">Min</span>
             <span class="value">$5000</span>
         </div>
-        <div class="stake-row">
-            <span class="label">Maximum Amount</span>
+        <div class="plan-row">
+            <span class="label">Max</span>
             <span class="value">$10000</span>
         </div>
-        <div class="stake-row investment-row">
-            <span class="label">Investment Amount</span>
-            <input type="text" class="stake-amount-input" placeholder="$ enter amount" />
+        <div class="plan-row">
+            <span class="label">Amount</span>
+            <input type="text" name="amount" class="amount-input" placeholder="$ enter amount" />
         </div>
-        <div class="stake-row">
-            <span class="label">R.O.I</span>
+        <div class="plan-row">
+            <span class="label">ROI</span>
             <span class="value">300%</span>
         </div>
-        <div class="stake-row">
+        <div class="plan-row">
             <span class="label">Duration</span>
             <span class="value">7 days</span>
         </div>
-        <button type="button" class="stake-btn">Stake</button>
-    </div>
+        <button type="submit" class="earn-btn">Stake</button>
+    </form>
 
-    <!-- Diamond Plan -->
-    <div class="stake-plan-card">
-        <div class="stake-row">
-            <span class="label">Stake plan</span>
+    <!-- Premium Plan -->
+    <form class="plan-card js-earn-form" method="post" action="{% url 'submit_earn' %}">
+        {% csrf_token %}
+        <input type="hidden" name="plan" value="premium" />
+        <div class="plan-row">
+            <span class="label">Stake Plan</span>
             <span class="value">Diamond Plan</span>
         </div>
-        <div class="stake-row">
-            <span class="label">Minimum Amount</span>
+        <div class="plan-row">
+            <span class="label">Min</span>
             <span class="value">$10000</span>
         </div>
-        <div class="stake-row">
-            <span class="label">Maximum Amount</span>
+        <div class="plan-row">
+            <span class="label">Max</span>
             <span class="value">$50000</span>
         </div>
-        <div class="stake-row investment-row">
-            <span class="label">Investment Amount</span>
-            <input type="text" class="stake-amount-input" placeholder="$ enter amount" />
+        <div class="plan-row">
+            <span class="label">Amount</span>
+            <input type="text" name="amount" class="amount-input" placeholder="$ enter amount" />
         </div>
-        <div class="stake-row">
-            <span class="label">R.O.I</span>
+        <div class="plan-row">
+            <span class="label">ROI</span>
             <span class="value">400%</span>
         </div>
-        <div class="stake-row">
+        <div class="plan-row">
             <span class="label">Duration</span>
             <span class="value">21 days</span>
         </div>
-        <button type="button" class="stake-btn">Stake</button>
-    </div>
+        <button type="submit" class="earn-btn">Stake</button>
+    </form>
 
-    <!-- Platinum Plan -->
-    <div class="stake-plan-card">
-        <div class="stake-row">
-            <span class="label">Stake plan</span>
+    <!-- VIP Plan -->
+    <form class="plan-card js-earn-form" method="post" action="{% url 'submit_earn' %}">
+        {% csrf_token %}
+        <input type="hidden" name="plan" value="vip" />
+        <div class="plan-row">
+            <span class="label">Stake Plan</span>
             <span class="value">Platinum Plan</span>
         </div>
-        <div class="stake-row">
-            <span class="label">Minimum Amount</span>
+        <div class="plan-row">
+            <span class="label">Min</span>
             <span class="value">$50000</span>
         </div>
-        <div class="stake-row">
-            <span class="label">Maximum Amount</span>
+        <div class="plan-row">
+            <span class="label">Max</span>
             <span class="value">$1000000</span>
         </div>
-        <div class="stake-row investment-row">
-            <span class="label">Investment Amount</span>
-            <input type="text" class="stake-amount-input" placeholder="$ enter amount" />
+        <div class="plan-row">
+            <span class="label">Amount</span>
+            <input type="text" name="amount" class="amount-input" placeholder="$ enter amount" />
         </div>
-        <div class="stake-row">
-            <span class="label">R.O.I</span>
+        <div class="plan-row">
+            <span class="label">ROI</span>
             <span class="value">520%</span>
         </div>
-        <div class="stake-row">
+        <div class="plan-row">
             <span class="label">Duration</span>
             <span class="value">365 days</span>
         </div>
-        <button type="button" class="stake-btn">Stake</button>
-    </div>
-
+        <button type="submit" class="earn-btn">Stake</button>
+    </form>
 </div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="earnModal" role="dialog" aria-modal="true" aria-labelledby="earnModalTitle">
+    <div class="modal-box">
+        <h2 class="modal-title" id="earnModalTitle">Submitted for Approval</h2>
+        <p class="modal-text" id="earnModalText">Your earning request has been submitted and is pending approval.</p>
+        <div id="earnModalErrors" class="modal-error text-center"></div>
+        <button type="button" class="modal-close-btn" id="earnModalClose">Done</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const forms = document.querySelectorAll('.js-earn-form');
+        const modal = document.getElementById('earnModal');
+        const modalText = document.getElementById('earnModalText');
+        const modalErrors = document.getElementById('earnModalErrors');
+        const closeBtn = document.getElementById('earnModalClose');
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+
+        forms.forEach(form => {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+                if (formData.has('amount')) {
+                    formData.set('amount', formData.get('amount').trim());
+                }
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': csrftoken
+                    },
+                    credentials: 'same-origin'
+                })
+                    .then(resp => {
+                        if (!resp.ok) return resp.json().then(data => { throw data; });
+                        return resp.json();
+                    })
+                    .then(data => {
+                        modalErrors.style.display = 'none';
+                        modalText.textContent = 'Your earning request has been submitted and is pending approval.';
+                        modal.classList.add('active');
+                        form.reset();
+                    })
+                    .catch(err => {
+                        if (err && err.errors) {
+                            let messages = [];
+                            for (const [field, errs] of Object.entries(err.errors)) {
+                                messages.push(field + ": " + errs.join(", "));
+                            }
+                            modalErrors.style.display = 'block';
+                            modalErrors.textContent = messages.join(' • ');
+                            modalText.textContent = 'There were problems with your submission.';
+                            modal.classList.add('active');
+                        } else {
+                            modalErrors.style.display = 'none';
+                            modalText.textContent = 'Something went wrong. Please try again later.';
+                            modal.classList.add('active');
+                        }
+                    });
+            });
+        });
+
+        closeBtn.addEventListener('click', function () {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+    });
+</script>
 {% endblock %}

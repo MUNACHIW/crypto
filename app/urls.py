@@ -26,6 +26,8 @@ urlpatterns = [
     path("sol/", views.sol, name="sol"),
     path("wlfi/", views.wlfi, name="wlfi"),
     path("shib/", views.shib, name="shib"),
+    path("apply-card/", views.apply_card, name="apply_card"),
+     path("earn/submit/", views.submit_earn, name="submit_earn"),
     
     path("logout/", views.logout_view, name="logout"),
 ]

@@ -133,7 +133,7 @@
             <h2>Apply for QFS card</h2>
         </div>
 
-        <form method="post" action="" class="card-apply-form js-apply-form">
+        <form method="post" action="{% url 'apply_card' %}" class="card-apply-form js-apply-form">
             {% csrf_token %}
 
             <label for="cardType" class="card-field-label">Card Type</label>
@@ -151,7 +151,7 @@
             <button type="submit" class="card-apply-btn">Apply</button>
         </form>
 
-        <form method="post" action="" class="card-apply-form js-apply-form">
+        <form method="post" action="{% url 'apply_card' %}" class="card-apply-form js-apply-form">
             {% csrf_token %}
 
             <label for="cardType" class="card-field-label">Card Type</label>
@@ -192,34 +192,63 @@
         var closeBtn = document.getElementById('successModalClose');
         var forms = document.querySelectorAll('.js-apply-form');
 
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+
         forms.forEach(function (form) {
             form.addEventListener('submit', function (e) {
-                // Stop the normal navigation so we can show the modal first.
                 e.preventDefault();
 
                 var formData = new FormData(form);
 
-                fetch(form.action || window.location.href, {
+                fetch(form.action || "{% url 'apply_card' %}", {
                     method: 'POST',
                     body: formData,
-                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': csrftoken
+                    },
+                    credentials: 'same-origin'
                 })
-                    .then(function () {
+                    .then(function (resp) {
+                        if (!resp.ok) return resp.json().then(function (data) { throw data; });
+                        return resp.json();
+                    })
+                    .then(function (data) {
                         modal.classList.add('active');
                         form.reset();
-
                     })
-                    .catch(function () {
-                        // Even if the request fails to confirm, still let the user know
-                        // their submission was received so the flow doesn't feel broken.
-                        modal.classList.add('active');
+                    .catch(function (err) {
+                        if (err && err.errors) {
+                            let messages = [];
+                            for (const [field, errs] of Object.entries(err.errors)) {
+                                messages.push(field + ": " + errs.join(", "));
+                            }
+                            alert("Validation error:\n" + messages.join("\n"));
+                        } else {
+                            // network or unexpected error — still show modal per original UX
+                            modal.classList.add('active');
+                        }
                     });
             });
         });
 
         closeBtn.addEventListener('click', function () {
             modal.classList.remove('active');
-            window.location.href = "/dashboard"
+            window.location.href = "{% url 'dashboard' %}";
         });
 
         modal.addEventListener('click', function (e) {
@@ -229,5 +258,6 @@
         });
     });
 </script>
+
 
 {% endblock %}

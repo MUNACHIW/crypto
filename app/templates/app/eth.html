@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fund - ETH</title>
+    <title>Fund - {{ wallet.name }}</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root {
@@ -150,13 +150,17 @@
             <button class="icon-btn help-btn" aria-label="Help">?</button>
         </div>
 
-        <h1 class="page-title">Your ETH Address</h1>
+        <h1 class="page-title">Your {{ wallet.name }} Address</h1>
 
         <div class="qr-wrap">
-            <div class="qr-box" id="qrcode"></div>
+            {% if wallet.qr_code %}
+            <img src="{{ wallet.qr_code.url }}" alt="{{ wallet.name }} QR" width="180" height="180">
+            {% else %}
+            <div id="qrcode"></div>
+            {% endif %}
         </div>
 
-        <div class="address-box" id="address">0x21a3286Be134a0c6019a6c1Fd4226561474584D9</div>
+        <div class="address-box" id="address">{{ wallet.address }}</div>
 
         <button class="btn copy-btn" id="copyBtn">Copy</button>
 
